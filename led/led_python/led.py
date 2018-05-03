@@ -1,3 +1,4 @@
+# -- coding: utf-8 --
 #导入模块
 import RPi.GPIO as GPIO
 import time
