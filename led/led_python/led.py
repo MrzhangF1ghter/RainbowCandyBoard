@@ -14,11 +14,11 @@ def led_init():
         pass
 #定义点亮led的函数on(i),参数为led号，编号范围为1~4,低电平点亮
 def on(i):
-    if(i>=1&&i<=4)
+    if(i>=1 and i<=4)
         GPIO.output(leds_pin[i-1],GPIO.LOW);
 #定义熄灭led的函数on(i),参数为led号，编号范围为1~4
 def off(i):
-    if(i>=1&&i<=4)
+    if(i>=1 and i<=4)
         GPIO.output(leds_pin[i-1],GPIO.HIGH);
 #定义流水灯函数flow(time),time为流水速度，单位为秒
 def flow(time):
