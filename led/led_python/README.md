@@ -18,8 +18,8 @@
 > 当我们想接自己io的时候，可以将跳帽拔开，那么板上的外设就和io口断开了，然后插上你想接的外设即可。
 
 > Python版本中，我们将led看做一个模块，当我们要使用led的时候导入这个模块使用。`led.py`就是我们的模块，`led_test.py`就是我们的测试程序
-首先先用gedit、puma、vim等文本编辑工具打开该文件夹下的`led.py`,如下，我们可以看看注释进行理解。
-### led模块 led.py 
+> 首先先用gedit、puma、vim等文本编辑工具打开该文件夹下的`led.py`,如下，我们可以看看注释进行理解。
+> ### led模块 led.py 
 ```Python
 # -- coding: utf-8 --
 #导入模块
@@ -57,7 +57,7 @@ def clean():
     GPIO.cleanup();
 ```
 
-### led测试程序 led_test.py 
+> ### led测试程序 led_test.py 
 ```Python
 #导入模块
 # -- coding: utf-8 --
