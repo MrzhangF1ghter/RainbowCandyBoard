@@ -33,8 +33,8 @@ int main()
     函数原型digitalWrite (int pin, int value)*/
   for(i=0;i<4;i++)
   {
-  pinMode(leds_pin[i],OUTPUT);//设置led_pin[i]引脚为输出模式
-  digitalWrite(leds_pin[i],HIGH);//初始化为高电平
+    pinMode(leds_pin[i],OUTPUT);//设置led_pin[i]引脚为输出模式
+    digitalWrite(leds_pin[i],HIGH);//初始化为高电平
   }
   while(1)//流水灯
   {
