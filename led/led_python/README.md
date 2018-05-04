@@ -7,12 +7,13 @@
 > |----|-----|-----|-----|
 > |LED1|BCM17|pin0 | 11 |    
 > |LED2|BCM27|pin2 |13  |
-> |LED3|BCM22|pin3 |15  |cd ./
+> |LED3|BCM22|pin3 |15  |
 > |LED4|BCM5 |pin21|29  |
 
 ### 原理图如下:
-[RainbowCandyBoard.pdf](https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/%E5%8E%9F%E7%90%86%E5%9B%BE/RainbowCandyBoard.pdf)
-![image](https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/LED/%E5%8E%9F%E7%90%86%E5%9B%BE/switch.png)
+[RainbowCandyBoard.pdf](https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/schematic/RainbowCandyBoard.pdf)<br>
+<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/led/schematic/LED.png" width=50% height=50%/><br>
+<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/led/schematic/led_pin.png" width=50% height=50%/><br>
 > 我们采用的是跳帽来连接IO口，你可以在彩虹板上看到有一排彩虹色的跳帽，找到LED1、LED2、LED3、LED4，那就是与IO连接的端口，具体端口号请看原理图。
 > 当我们想接自己io的时候，可以将跳帽拔开，那么板上的外设就和io口断开了，然后插上你想接的外设即可。
 
@@ -36,21 +37,22 @@ def led_init():
         pass
 #定义点亮led的函数on(i),参数为led号，编号范围为1~4,低电平点亮
 def on(i):
-    if(i>=1&&i<=4)
+    if(i>=1 and i<=4):
         GPIO.output(leds_pin[i-1],GPIO.LOW);
 #定义熄灭led的函数on(i),参数为led号，编号范围为1~4
 def off(i):
-    if(i>=1&&i<=4)
+    if(i>=1 and i<=4):
         GPIO.output(leds_pin[i-1],GPIO.HIGH);
 #定义流水灯函数flow(time),time为流水速度，单位为秒
-def flow(time):
-    for i in leds_pin
+def flow(delay):
+    for i in range(len(leds_pin)):
         GPIO.output(leds_pin[i],GPIO.LOW);
         print('LED',i+1,'is on');
-        time.sleep(time);
+        time.sleep(delay);
         GPIO.output(leds_pin[i],GPIO.HIGH);
         print('LED',i+1,'is off');
-        time.sleep(time);
+        time.sleep(delay);
+#GPIO清理函数，调用后释放GPIO
 def clean():
     GPIO.cleanup();
 ```
@@ -73,5 +75,6 @@ while var == 1
 > 当我们修改了Python版本代码后想运行时，保存后即可运行<br>
 > 执行验证
 > `./python 程序名`
->例:`./led_test.py`
->按了回车后，你将会发现彩虹板上的LED随着你的要求而亮灭<br>
+> 例:`./led_test.py`
+> 按了回车后，你将会发现彩虹板上的LED随着你的要求而亮灭<br>
+> 按下`Ctrl+C`结束程序<br>
