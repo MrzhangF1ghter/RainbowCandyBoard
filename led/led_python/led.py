@@ -29,6 +29,7 @@ def flow(delay):
         GPIO.output(leds_pin[i],GPIO.HIGH);
         print('LED',i+1,'is off');
         time.sleep(delay);
+#GPIO清理函数，调用后释放GPIO
 def clean():
     GPIO.cleanup();
 
