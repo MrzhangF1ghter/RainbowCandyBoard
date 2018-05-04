@@ -22,20 +22,21 @@ int main(int argc, char **argv)
 	int i;//定义一个用于循环计数变量
 	printf("Welcome to IODevelopBoard!\n");//打印欢迎信息
 	printf("LEDS test,wiringPi version\n");//打印欢迎信息
-    if (!bcm2835_init())return 1;
+	if (!bcm2835_init())return -1;//若初始化失败，则返回-1失败码
 	for(i=0;i<4;i++)
-    	bcm2835_gpio_fsel(leds_pin[i], BCM2835_GPIO_FSEL_OUTP);//配置引脚
-
-    while (1)
-    {
+	{
+	    bcm2835_gpio_fsel(leds_pin[i], BCM2835_GPIO_FSEL_OUTP);//利用循环和数组配置引脚
+	}
+	while (1)
+	{
 		for(i=0;i<4;i++)
 		{
-			bcm2835_gpio_write(leds_pin[i], LOW);
-			bcm2835_delay(500);
-        	bcm2835_gpio_write(leds_pin[i], HIGH);
-       	 	bcm2835_delay(500);
+			bcm2835_gpio_write(leds_pin[i], LOW);//低电平点亮
+			bcm2835_delay(500);//延时500ms
+	    bcm2835_gpio_write(leds_pin[i], HIGH);
+	    bcm2835_delay(500);
 		}
-    }
-    bcm2835_close();
-    return 0;
+	}
+	bcm2835_close();
+	return 0;
 }

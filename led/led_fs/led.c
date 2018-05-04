@@ -12,7 +12,7 @@
 #define LOW  0
 #define HIGH 1
 
-#define POUT            26   
+#define POUT            17//LED1
 #define BUFFER_MAX      3
 #define DIRECTION_MAX   48
 
@@ -21,16 +21,17 @@ static int GPIOExport(int pin)
     char buffer[BUFFER_MAX];
     int len;
     int fd;
-
+		//打开gpio相关文件export进行读写
     fd = open("/sys/class/gpio/export", O_WRONLY);
     if (fd < 0) {
         fprintf(stderr, "Failed to open export for writing!\n");
         return(-1);
     }
-
+		
     len = snprintf(buffer, BUFFER_MAX, "%d", pin);
+    //把传进来的pin也就是引脚号写入export文件
     write(fd, buffer, len);
-    
+    //文件操作完成需要关闭文件
     close(fd);
     return(0);
 }
@@ -76,7 +77,7 @@ static int GPIODirection(int pin, int dir)
     return(0);
 }
 
-static int GPIORead(int pin)
+static int GPIORead(int pin)//读取gpio值
 {
     char path[DIRECTION_MAX];
     char value_str[3];
@@ -98,7 +99,7 @@ static int GPIORead(int pin)
     return(atoi(value_str));
 }
 
-static int GPIOWrite(int pin, int value)
+static int GPIOWrite(int pin, int value)//向指定io写值
 {
     static const char s_values_str[] = "01";
     char path[DIRECTION_MAX];
@@ -124,11 +125,11 @@ int main(int argc, char *argv[])
 {
     int i = 0;
 
-    GPIOExport(POUT);
-    GPIODirection(POUT, OUT);
+    GPIOExport(POUT);//设置宏定义POUT所定义的值
+    GPIODirection(POUT, OUT);//设置POUT引脚是输入还是输出
 
     for (i = 0; i < 20; i++) {
-        GPIOWrite(POUT, i % 2);
+        GPIOWrite(POUT, i % 2);//写0和非0，实现高低电平翻转（亮灭共10次）
         usleep(500 * 1000);
     }
 
