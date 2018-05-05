@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 
 	while((direntp = readdir(dirp)) != NULL)
 	{
-		if(strstr(direntp->d_name,"28-00000"))
+		if(strstr(direntp->d_name,"28-0"))
 		{
 			strcpy(rom,direntp->d_name);
 			printf(" rom: %s\n",rom);

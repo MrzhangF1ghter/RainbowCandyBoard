@@ -2,7 +2,7 @@
 	author:MrzhangF1ghter 
 	Last Edit time:2018-4-30
 	此为RainbowBoard 蜂鸣器例程 使用wiringPi库
-	彩虹板上led灯物理连接如下
+	彩虹板上蜂鸣器物理连接如下
 	蜂鸣器   | GPIO | wPi |排针号|
 	BUZEER BCM12->pin26	32
 **************************************************************/
@@ -21,10 +21,10 @@ int main()
 		
 		while(1)//隔一秒响一次
 		{
-				digitalWrite(BUZZER_PIN,LOW);//蜂鸣器引脚低电平（低电平响）
+				digitalWrite(BUZZER_PIN,HIGH);//蜂鸣器引脚低电平（高电平响）
 				printf("BUZZER is on!\n");
 				sleep(1);//程序休眠1秒
-				digitalWrite(BUZZER_PIN,HIGH);//蜂鸣器引脚高电平（高电平关闭）
+				digitalWrite(BUZZER_PIN,LOW);//蜂鸣器引脚高电平（低电平关闭）
 				printf("BUZZER is off!\n");
 				sleep(1);//程序休眠1秒
 		}

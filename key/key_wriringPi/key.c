@@ -1,16 +1,6 @@
 #include<stdio.h>
 #include<unistd.h>
 #include<wiringPi.h>//wiringPi路径
-
-#define LED1 0//宏定义LED1为GPIO17，wiringPi库为wPi0 (GPIO_GEN0)
-#define LED2 2
-#define LED3 3
-#define LED4 21
-
-#define KEY1 22//宏定义LED1为GPIO17，wiringPi库为wPi0 (GPIO_GEN0)
-#define KEY2 23
-#define KEY3 24
-#define KEY4 25
 int main()
 {
 		int leds_pin[4]={0,2,3,21};//存放led对应gpio引脚号的数组
@@ -38,7 +28,7 @@ int main()
 			{
 				if(!digitalRead(keys_pin[i]))
 				{
-						delay(20);
+						delay(100);
 						if(!digitalRead(keys_pin[i]))
 						{
 							while(!digitalRead(keys_pin[i]));//等待松手

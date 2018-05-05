@@ -12,6 +12,7 @@
 #define LOW  0
 #define HIGH 1
 
+#define POUT            12//BUZZER
 #define BUFFER_MAX      3
 #define DIRECTION_MAX   48
 
@@ -20,9 +21,8 @@ static int GPIOExport(int pin)
     char buffer[BUFFER_MAX];
     int len;
     int fd;
-		/*访问/sys/class/gpio目录，向export文件写入GPIO编号，
-		使得该GPIO的操作接口从内核空间暴露到用户空间*/
-    fd = open("/sys/class/gpio/export", O_WRONLY);//暴露gpio操作接口
+		//打开gpio相关文件export进行读写
+    fd = open("/sys/class/gpio/export", O_WRONLY);
     if (fd < 0) {
         fprintf(stderr, "Failed to open export for writing!\n");
         return(-1);
@@ -36,7 +36,7 @@ static int GPIOExport(int pin)
     return(0);
 }
 
-static int GPIOUnexport(int pin)//隐藏gpio接口
+static int GPIOUnexport(int pin)
 {
     char buffer[BUFFER_MAX];
     int len;
@@ -55,7 +55,7 @@ static int GPIOUnexport(int pin)//隐藏gpio接口
     return(0);
 }
 
-static int GPIODirection(int pin, int dir)//配置gpio方向
+static int GPIODirection(int pin, int dir)
 {
     static const char dir_str[]  = "in\0out";
     char path[DIRECTION_MAX];
@@ -99,7 +99,7 @@ static int GPIORead(int pin)//读取gpio值
     return(atoi(value_str));
 }
 
-static int GPIOWrite(int pin, int value)//写值到特定gpio
+static int GPIOWrite(int pin, int value)//向指定io写值
 {
     static const char s_values_str[] = "01";
     char path[DIRECTION_MAX];
@@ -122,28 +122,18 @@ static int GPIOWrite(int pin, int value)//写值到特定gpio
 }
 
 int main(int argc, char *argv[])
-{ 
-		int leds_pin[4]={17,27,22,5};//定义一个存放led对应gpio引脚号的整形数组
-		int i;
-		for(i=0;i<4;i++)
-		{
-			GPIOExport(leds_pin[i]);//暴露引脚列表里的gpio
-    	GPIODirection(leds_pin[i], OUT);//设置引脚为输出模式
-		}
-		while(1)
-		{
-			for(i=0;i<4;i++)
-			{
-				 GPIOWrite(leds_pin[i],LOW);
-				 usleep(500 * 1000);
-				 GPIOWrite(leds_pin[i],HIGH);
-				 usleep(500 * 1000);
-			}	
-		}
-		for(i=0;i<4;i++)
-		{
-			GPIOUnexport(leds_pin[i]);//隐藏引脚列表里的gpio
-		}
+{
+    int i = 0;
+
+    GPIOExport(POUT);//设置宏定义POUT所定义的值
+    GPIODirection(POUT, OUT);//设置POUT引脚是输入还是输出
+
+    for (i = 0; i < 20; i++) {
+        GPIOWrite(POUT, i % 2);//写0和非0，实现高低电平翻转（鸣叫10次）
+        usleep(100 * 1000);
+    }
+
+    GPIOUnexport(POUT);
     return(0);
 }
 

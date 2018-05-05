@@ -6,11 +6,11 @@
  * Last Edit time:2018-5-1
  * 此为RainbowBoard LED例程 使用BCM2835库
  * 彩虹板上led灯物理连接如下
-   灯   | GPIO | wPi |排针号|
-   LED1 BCM17->pin0	 11    
-   LED2 BCM27->pin2	 13
-   LED3 BCM22->pin3	 15
-   LED4 BCM5 ->pin21 29
+   灯 | GPIO | wPi |排针号|
+   LED1 BCM17	pin0	 11    
+   LED2 BCM27	pin2	 13
+   LED3 BCM22	pin3	 15
+   LED4 BCM5 	pin21  29
 */
 
 #include <bcm2835.h>
