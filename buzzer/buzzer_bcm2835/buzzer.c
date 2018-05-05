@@ -12,11 +12,9 @@
 
 #include <bcm2835.h>
 #include <stdio.h>
-#define BUZZER_PIN 26
+#define BUZZER_PIN 12
 int main(int argc, char **argv)
 {
-	int leds_pin[4]={17,27,22,5};//定义一个存放led对应gpio引脚号的整形数组
-	int i;//定义一个用于循环计数变量
 	printf("Welcome to IODevelopBoard!\n");//打印欢迎信息
 	printf("BUZZER test,wiringPi version\n");//打印欢迎信息
 	if (!bcm2835_init())return -1;//若初始化失败，则返回-1失败码

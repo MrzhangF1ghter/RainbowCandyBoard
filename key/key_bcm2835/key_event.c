@@ -37,7 +37,7 @@ int main()
 		}
 		if(i==3)//循环计数清0以重新计数
 			i=-1;
-		bcm2835_delay(100);
+		bcm2835_delay(50);
 	}
 	bcm2835_close();
 	return 0;

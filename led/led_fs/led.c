@@ -123,24 +123,24 @@ static int GPIOWrite(int pin, int value)//写值到特定gpio
 
 int main(int argc, char *argv[])
 { 
-		int leds_pin[4]={17,27,22,5};//定义一个存放led对应gpio引脚号的整形数组
+		int leds_pin[2]={17,27};//定义一个存放led对应gpio引脚号的整形数组
 		int i;
-		for(i=0;i<4;i++)
+		for(i=0;i<2;i++)
 		{
 			GPIOExport(leds_pin[i]);//暴露引脚列表里的gpio
     	GPIODirection(leds_pin[i], OUT);//设置引脚为输出模式
 		}
 		while(1)
 		{
-			for(i=0;i<4;i++)
+			for(i=0;i<2;i++)
 			{
 				 GPIOWrite(leds_pin[i],LOW);
-				 usleep(500 * 1000);
+				 usleep(200 * 1000);
 				 GPIOWrite(leds_pin[i],HIGH);
-				 usleep(500 * 1000);
+				 usleep(200 * 1000);
 			}	
 		}
-		for(i=0;i<4;i++)
+		for(i=0;i<2;i++)
 		{
 			GPIOUnexport(leds_pin[i]);//隐藏引脚列表里的gpio
 		}
