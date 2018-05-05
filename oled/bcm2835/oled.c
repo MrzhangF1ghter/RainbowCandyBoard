@@ -12,7 +12,7 @@ int main(int argc,char **argv)
 	printf("OLED Test Program !!!\n");
 
 	SSD1306_begin();
-	SSD1306_bitmap(0,0,waveshare,128,64);
+	SSD1306_bitmap(0,0,RainbowHat,128,64);
 	SSD1306_display();
 	bcm2835_delay(2000);
 	SSD1306_clear();
@@ -20,17 +20,6 @@ int main(int argc,char **argv)
 	{
 		time(&now);
 		timenow = localtime(&now);
-
-		SSD1306_bitmap(0, 2, Singal816, 16, 8); 
-    	SSD1306_bitmap(24, 2,Bluetooth88, 8, 8); 
-    	SSD1306_bitmap(40, 2, Msg816, 16, 8); 
-    	SSD1306_bitmap(64, 2, GPRS88, 8, 8); 
-    	SSD1306_bitmap(90, 2, Alarm88, 8, 8); 
-    	SSD1306_bitmap(112, 2, Bat816, 16, 8); 
-
-    	SSD1306_string(0, 52, "MUSIC", 12, 0); 
-    	SSD1306_string(52, 52, "MENU", 12, 0); 
-    	SSD1306_string(98, 52, "PHONE", 12, 0);
 
 		SSD1306_char3216(0,16, value[timenow->tm_hour/10]);
     	SSD1306_char3216(16,16, value[timenow->tm_hour%10]);

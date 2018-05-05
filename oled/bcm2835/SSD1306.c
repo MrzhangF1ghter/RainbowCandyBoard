@@ -6,8 +6,8 @@
 #define height 64
 #define pages 8
 
-#define RST 19 
-#define DC  16
+#define RST 25 
+#define DC  24
 char buffer[1024];
 
 void command(char cmd){
@@ -105,7 +105,7 @@ void SSD1306_char3216(uint8_t x, uint8_t y, uint8_t chChar)
 	uint8_t chTemp = 0, y0 = y, chMode = 0;
 
 	for (i = 0; i < 64; i ++) {
-		chTemp = Font3216[chChar - 0x30][i];
+		chTemp = Font3216_Mono[chChar - 0x30][i];
 		for (j = 0; j < 8; j ++) {
 			chMode = chTemp & 0x80? 1 : 0; 
 			SSD1306_pixel(x, y, chMode);

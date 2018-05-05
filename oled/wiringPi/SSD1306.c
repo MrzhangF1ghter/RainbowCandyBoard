@@ -9,8 +9,8 @@
 #define height 64
 #define pages 8
 
-#define RST 24 
-#define DC  27
+#define RST 6 //引脚号请对应原理图，采用原生SPI接口
+#define DC  5
 unsigned char buffer[1024];
 
 void command(unsigned char cmd){
@@ -100,9 +100,8 @@ void SSD1306_char3216(unsigned char x,unsigned char y,unsigned char chChar)
 {
 	unsigned char i, j;
 	unsigned char chTemp = 0, y0 = y, chMode = 0;
-
 	for (i = 0; i < 64; i ++) {
-		chTemp = Font3216[chChar - 0x30][i];
+		chTemp = Font3216_Mono[chChar - 48][i];
 		for (j = 0; j < 8; j ++) {
 			chMode = chTemp & 0x80? 1 : 0; 
 			SSD1306_pixel(x, y, chMode);
