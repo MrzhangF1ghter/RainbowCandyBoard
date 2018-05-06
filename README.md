@@ -5,7 +5,7 @@
 ### 新手引导:
 > https://github.com/MrzhangF1ghter/RainbowCandyBoard/wiki
 ### 代码以及教程：
-> 请浏览外设对应名称的文件夹，里面包含源码和教程文件，教程为.md后缀，也就是Markdown格式。<br>
+> 请浏览外设对应名称的文件夹及版本，里面包含源码和教程文件，教程为.md后缀，也就是Markdown格式。<br>
 ### 源码文件结构
 ```
 .
