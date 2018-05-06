@@ -18,7 +18,7 @@
 > 当我们想接自己io的时候，可以将跳帽拔开，那么板上的外设就和io口断开了，然后插上你想接的外设即可。
 > shell版本中，我们采用脚本进行点亮led操作，对于不熟悉shell的用户，可自行了解相关内容
 > 代码如下：
-> ### led脚本 led.py 
+> ### led脚本 led.sh
 ```C
 #! /bin/bash
 #sudo ./led.sh pin value
