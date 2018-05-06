@@ -25,5 +25,6 @@
 > `sudo modprobe w1_gpio`<br>
 > `sudo modprobe w1_therm`<br>
 > 如果没有问题，将会在/sys/bus/w1/devices/中发现28-xxxx开头的文件夹，此为DS18B20的ROM，通过读取里面的w1-slave文件则返回当前温度值，如图:<br>
+> <img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ds18b20/schematic/cat.png" width=50% height=50%/><br>
 > 返回数据中 第一行的YES表示CRC校验成功 数据有效，第二行的t=xxxx则为当前温度<br>
-###代码 请打开先关文件夹查看教程和代码
+### 代码 请打开先关文件夹查看教程和代码
