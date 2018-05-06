@@ -1,24 +1,20 @@
 # MrzhangF1ghterStudio 彩虹RainbowHAT系列
-# LED教程 （fs 文件操作版本）
+# BUZZER蜂鸣器教程 （BCM2835 C库版本）
 
 ## 玩转代码
 > ### 在我们的彩虹扩展板上 4盏LED分别对应着一下GPIO引脚
-> 灯   | GPIO | wPi |排针号|
+> 蜂鸣器| GPIO | wPi |排针号|
 > |----|-----|-----|-----|
-> |LED1|BCM17|pin0 | 11 |    
-> |LED2|BCM27|pin2 |13  |
-> |LED3|BCM22|pin3 |15  |
-> |LED4|BCM5 |pin21|29  |
-
+> |BUZZER|BCM12|pin26 | 32 |    
 ### 原理图如下:
 [RainbowCandyBoard.pdf](https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/schematic/RainbowCandyBoard.pdf)<br>
-<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/led/schematic/LED.png" width=50% height=50%/><br>
-<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/led/schematic/led_pin.png" width=50% height=50%/><br>
+<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/buzzer/schematic/buzzer.png" width=50% height=50%/><br>
+<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/buzzer/schematic/buzzer_pin.png" width=50% height=50%/><br>
 > 我们采用的是跳帽来连接IO口，你可以在彩虹板上看到有一排彩虹色的跳帽，找到LED1、LED2、LED3、LED4，那就是与IO连接的端口，具体端口号请看原理图。
 > 当我们想接自己io的时候，可以将跳帽拔开，那么板上的外设就和io口断开了，然后插上你想接的外设即可。
 
 首先先用gedit、puma、vim等文本编辑工具打开该文件夹下的led.c,如下，我们可以看看注释进行理解。
-> 在Linux下，每个设备可以看做一个文件，比如LED我们可以看成一个文件，使用文件操作方法write(),read()，在内核中相关驱动将会将应用层的读写方法指向驱动中的读写方法，从而实现操作LED，对于用户来说，无需关心内核驱动如何实现，只需编写应用层软件即可。
+> 在Linux下，万物皆文件，比如LED我们可以看成一个文件，使用文件操作方法write(),read()，在内核中相关驱动将会将应用层的读写方法指向驱动中的读写方法，从而实现操作LED，对于用户来说，无需关心内核驱动如何实现，只需编写应用层软件即可。
 ```C
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -34,7 +30,6 @@
 #define LOW  0
 #define HIGH 1
 
-#define POUT            17//LED1
 #define BUFFER_MAX      3
 #define DIRECTION_MAX   48
 
@@ -43,8 +38,9 @@ static int GPIOExport(int pin)
     char buffer[BUFFER_MAX];
     int len;
     int fd;
-		//打开gpio相关文件export进行读写
-    fd = open("/sys/class/gpio/export", O_WRONLY);
+		/*访问/sys/class/gpio目录，向export文件写入GPIO编号，
+		使得该GPIO的操作接口从内核空间暴露到用户空间*/
+    fd = open("/sys/class/gpio/export", O_WRONLY);//暴露gpio操作接口
     if (fd < 0) {
         fprintf(stderr, "Failed to open export for writing!\n");
         return(-1);
@@ -58,7 +54,7 @@ static int GPIOExport(int pin)
     return(0);
 }
 
-static int GPIOUnexport(int pin)
+static int GPIOUnexport(int pin)//隐藏gpio接口
 {
     char buffer[BUFFER_MAX];
     int len;
@@ -77,7 +73,7 @@ static int GPIOUnexport(int pin)
     return(0);
 }
 
-static int GPIODirection(int pin, int dir)
+static int GPIODirection(int pin, int dir)//配置gpio方向
 {
     static const char dir_str[]  = "in\0out";
     char path[DIRECTION_MAX];
@@ -121,7 +117,7 @@ static int GPIORead(int pin)//读取gpio值
     return(atoi(value_str));
 }
 
-static int GPIOWrite(int pin, int value)//向指定io写值
+static int GPIOWrite(int pin, int value)//写值到特定gpio
 {
     static const char s_values_str[] = "01";
     char path[DIRECTION_MAX];
@@ -142,7 +138,6 @@ static int GPIOWrite(int pin, int value)//向指定io写值
     close(fd);
     return(0);
 }
-
 int main(int argc, char *argv[])
 {
     int i = 0;
@@ -151,8 +146,8 @@ int main(int argc, char *argv[])
     GPIODirection(POUT, OUT);//设置POUT引脚是输入还是输出
 
     for (i = 0; i < 20; i++) {
-        GPIOWrite(POUT, i % 2);//写0和非0，实现高低电平翻转（亮灭共10次）
-        usleep(500 * 1000);
+        GPIOWrite(POUT, i % 2);//写0和非0，实现高低电平翻转（鸣叫10次）
+        usleep(100 * 1000);
     }
 
     GPIOUnexport(POUT);
@@ -164,20 +159,17 @@ int main(int argc, char *argv[])
 > 此版本提供了Makefile文件，Makefile文件描述了整个工程的编译、链接等规则，用户只需要运行make即可按照程序员所写好的规则编译程序。
 > 此Makefile文件内容如下
 ```C
-led:led.c
-	gcc led.c -o led 
+buzzer:buzzer.c
+	gcc buzzer.c -o buzzer 
 clean:
-	rm led
+	rm buzzer
 ```
 > 运行`make`即可编译
-> 相当于在终端里手动输入 gcc -o led led.c 
+> 相当于在终端里手动输入 gcc buzzer.c -o buzzer 
 > 若无错误，则将会生成目标文件名的可执行文件，如有错误，请根据编译器提示排错。<br>
 > 执行验证
 > `./目标文件名`
 > 例<br>
 > `./led`
-> 按了回车后，你将会发现彩虹板上的LED1闪烁10次后退出<br>
+> 按了回车后，你将会发现彩虹板上的蜂鸣器鸣叫10次后退出<br>
 > 按下`Ctrl+C`结束程序<br>
-## 扩展
-> 用户可以扩展使用自己的的LED进行亮灭，只需把对应跳帽拔掉，接上排线即可。请注意使用同一个电源（共地）
-> <img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/led/schematic/led_jumper.png" width=50% height=50%/><br>
