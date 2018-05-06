@@ -1,19 +1,22 @@
-/* blink.c
- * you can build this with something like:
- * gcc -Wall blink.c -o blink -lbcm2835
- * sudo ./blink
- * author:MrzhangF1ghter 
- * Last Edit time:2018-5-1
- * 此为RainbowBoard 蜂鸣器例程 使用BCM2835库
-	彩虹板上蜂鸣器物理连接如下
-	蜂鸣器   | GPIO | wPi |排针号|
-	BUZEER BCM12->pin26	32
-*/
-
+/********************************************************************************* 
+  *Copyright(C),MrzhangF1ghter studio
+  *FileName:buzzer.c
+  *Author:MrzhangF1ghter 
+  *Version:1.0 
+  *Date:2018/5/6 
+  *Description:树莓派彩虹IO扩展板蜂鸣器代码 bcm2835 c库版本。
+  *Others:Learn more from：https://github.com/MrzhangF1ghter/RainbowCandyBoard
+  *Function List:
+  *History:
+  *compile:gcc -o buzzer buzzer.c -lbcm2835
+  彩虹板上蜂鸣器物理连接如下
+	蜂鸣器 | GPIO | wPi |排针号|
+	BUZEER 	BCM12	pin26		32
+**********************************************************************************/ 
 #include <bcm2835.h>
 #include <stdio.h>
-#define BUZZER_PIN 12
-int main(int argc, char **argv)
+#define BUZZER_PIN 12//宏定义蜂鸣器引脚
+int main()
 {
 	printf("Welcome to IODevelopBoard!\n");//打印欢迎信息
 	printf("BUZZER test,wiringPi version\n");//打印欢迎信息

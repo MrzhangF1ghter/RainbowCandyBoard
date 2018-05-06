@@ -1,3 +1,18 @@
+/********************************************************************************* 
+  *Copyright(C),MrzhangF1ghter studio
+  *FileName:buzzer.c
+  *Author:MrzhangF1ghter 
+  *Version:1.0 
+  *Date:2018/5/6 
+  *Description:树莓派彩虹IO扩展板蜂鸣器代码 sysfs版本。
+  *Others:Learn more from：https://github.com/MrzhangF1ghter/RainbowCandyBoard
+  *Function List:
+  *History:
+  *compile:gcc -o buzzer buzzer.c -lbcm2835
+  彩虹板上蜂鸣器物理连接如下
+	蜂鸣器 | GPIO | wPi |排针号|
+	BUZEER 	BCM12	pin26		32
+**********************************************************************************/ 
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <fcntl.h>
@@ -12,7 +27,6 @@
 #define LOW  0
 #define HIGH 1
 
-#define POUT            12//BUZZER
 #define BUFFER_MAX      3
 #define DIRECTION_MAX   48
 
@@ -21,8 +35,9 @@ static int GPIOExport(int pin)
     char buffer[BUFFER_MAX];
     int len;
     int fd;
-		//打开gpio相关文件export进行读写
-    fd = open("/sys/class/gpio/export", O_WRONLY);
+		/*访问/sys/class/gpio目录，向export文件写入GPIO编号，
+		使得该GPIO的操作接口从内核空间暴露到用户空间*/
+    fd = open("/sys/class/gpio/export", O_WRONLY);//暴露gpio操作接口
     if (fd < 0) {
         fprintf(stderr, "Failed to open export for writing!\n");
         return(-1);
@@ -36,7 +51,7 @@ static int GPIOExport(int pin)
     return(0);
 }
 
-static int GPIOUnexport(int pin)
+static int GPIOUnexport(int pin)//隐藏gpio接口
 {
     char buffer[BUFFER_MAX];
     int len;
@@ -55,7 +70,7 @@ static int GPIOUnexport(int pin)
     return(0);
 }
 
-static int GPIODirection(int pin, int dir)
+static int GPIODirection(int pin, int dir)//配置gpio方向
 {
     static const char dir_str[]  = "in\0out";
     char path[DIRECTION_MAX];
@@ -99,7 +114,7 @@ static int GPIORead(int pin)//读取gpio值
     return(atoi(value_str));
 }
 
-static int GPIOWrite(int pin, int value)//向指定io写值
+static int GPIOWrite(int pin, int value)//写值到特定gpio
 {
     static const char s_values_str[] = "01";
     char path[DIRECTION_MAX];
@@ -120,7 +135,6 @@ static int GPIOWrite(int pin, int value)//向指定io写值
     close(fd);
     return(0);
 }
-
 int main(int argc, char *argv[])
 {
     int i = 0;

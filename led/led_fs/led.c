@@ -1,3 +1,21 @@
+/********************************************************************************* 
+  *Copyright(C),MrzhangF1ghter studio
+  *FileName:led.c
+  *Author:MrzhangF1ghter 
+  *Version:1.0 
+  *Date:2018/5/6 
+  *Description:树莓派彩虹IO扩展板LED代码 文件系统(sysfs)版本。
+  *Others:Learn more from：https://github.com/MrzhangF1ghter/RainbowCandyBoard
+  *Function List:
+  *History:
+  *compile:gcc -o led led.c
+  彩虹板上按键物理连接如下
+   灯 | GPIO | wPi |排针号|
+   LED1 BCM17	pin0	 11    
+   LED2 BCM27	pin2	 13
+   LED3 BCM22	pin3	 15
+   LED4 BCM5 	pin21  29
+**********************************************************************************/ 
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <fcntl.h>

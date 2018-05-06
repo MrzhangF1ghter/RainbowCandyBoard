@@ -1,5 +1,5 @@
-led:led.c
-	gcc led.c -o led 
+buzzer:buzzer.c
+	gcc buzzer.c -o buzzer 
 clean:
-	rm led
+	rm buzzer
 

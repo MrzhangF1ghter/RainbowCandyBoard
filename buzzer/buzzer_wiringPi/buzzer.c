@@ -1,11 +1,18 @@
-/**************************************************************
-	author:MrzhangF1ghter 
-	Last Edit time:2018-4-30
-	此为RainbowBoard 蜂鸣器例程 使用wiringPi库
-	彩虹板上蜂鸣器物理连接如下
-	蜂鸣器   | GPIO | wPi |排针号|
-	BUZEER BCM12->pin26	32
-**************************************************************/
+/********************************************************************************* 
+  *Copyright(C),MrzhangF1ghter studio
+  *FileName:buzzer.c
+  *Author:MrzhangF1ghter 
+  *Version:1.0 
+  *Date:2018/5/6 
+  *Description:树莓派彩虹IO扩展板蜂鸣器代码 wiringPi版本。
+  *Others:Learn more from：https://github.com/MrzhangF1ghter/RainbowCandyBoard
+  *Function List:
+  *History:
+  *compile:gcc -o buzzer buzzer.c -lbcm2835
+  彩虹板上蜂鸣器物理连接如下
+	蜂鸣器 | GPIO | wPi |排针号|
+	BUZEER 	BCM12	pin26		32
+**********************************************************************************/ 
 #include<stdio.h>
 #include<unistd.h>
 #include<wiringPi.h>//wiringPi路径
