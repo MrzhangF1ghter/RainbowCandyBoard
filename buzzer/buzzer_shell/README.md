@@ -15,7 +15,7 @@
 > 当我们想接自己io的时候，可以将跳帽拔开，那么板上的外设就和io口断开了，然后插上你想接的外设即可。
 
 > 代码如下：
-> ### led脚本 led.sh 
+> ### buzzer脚本 buzzer.sh 
 ```C
 #! /bin/bash
 #sudo ./led.sh pin value
@@ -30,7 +30,7 @@ echo $2 > /sys/class/gpio/gpio$1/value
 ```
 ## 玩
 > 编辑完脚本后我们就可以运行测试了<br>
-> 比如我们要点亮LED1（对应BCM引脚17），低电平点亮
-> `./led.sh 17 0`
-> 若无法执行，提示command not found，请修改led.sh权限为可执行文件,如下:
-> `chmod 777 led.sh`
+> 比如我们要蜂鸣器鸣叫（对应BCM引脚12），高电平响
+> `./buzzer.sh 12 0`
+> 若无法执行，提示command not found，请修改buzzer.sh权限为可执行文件,如下:
+> `chmod 777 buzzer.sh`
