@@ -20,4 +20,4 @@ for i in range(len(keys_pin)):
 	GPIO.add_event_detect(keys_pin[i],GPIO.FALLING,key_Interrupt,200)
 	pass
 while True:
-	time.sleep(1)
+	time.sleep(1)#不占用cpu资源，当按键按下进入中断处理
