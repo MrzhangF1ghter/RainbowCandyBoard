@@ -22,7 +22,7 @@
 > 终端最后显示`Finished processing dependencies for Adafruit-SSD1306xxxx`则代表安装成功了<br>
 ### 使用：
 > 在example文件里有很多例子程序 只需要`python xxxx.py &`即可执行了，其中&代表后台执行<br>
-> 例子:`python stats.py &`则oled会显示当前系统信息<br> 
+> 例子:`python stats.py &`则oled会显示当前系统信息 <br> 
 > 注意:每个.py文件引脚号都适配彩虹板了，若需要修改，请找到此段修改RST和DC引脚，引脚为BCM引脚：<br>
 ```Python
 # Raspberry Pi pin configuration:
@@ -31,5 +31,5 @@ RST = 25
 DC = 24
 ```<br>
 > 若需要修改SPI引脚 请找到：<br>
-> `# disp = Adafruit_SSD1306.SSD1306_128_32(rst=RST, dc=DC, sclk=18, din=25, cs=22)`将#去掉，并把引脚修改成你oled所对应的引脚<br>
+> `# disp = Adafruit_SSD1306.SSD1306_128_32(rst=RST, dc=DC, sclk=18, din=25, cs=22)`将#去掉，并把引脚修改成你oled所对应的引脚 <br>
 > 若需要修改成I2C 请将SPI相关代码注释掉并将I2C代码取消注释，详情请看源码注释。<br>
