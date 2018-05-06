@@ -7,7 +7,7 @@
 > |----|-----|-----|-----|
 > |BUZZER|BCM12|pin26 | 32 |    
 
-首先先用gedit、puma、vim等文本编辑工具打开该文件夹下的buzzer.c,如下，我们可以看看注释进行理解。
+首先先用gedit、pluma、vim等文本编辑工具打开该文件夹下的buzzer.c,如下，我们可以看看注释进行理解。
 ```C
 #include<stdio.h>
 #include<unistd.h>
