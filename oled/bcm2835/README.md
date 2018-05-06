@@ -50,7 +50,7 @@ int main(int argc,char **argv)
 		SSD1306_char3216(96,16, value[timenow->tm_sec/10]);
 		SD1306_char3216(112,16, value[timenow->tm_sec%10]);
 		SSD1306_display();
-    }
+    	}
 	bcm2835_spi_end();
 	bcm2835_close();
 	return 0;
