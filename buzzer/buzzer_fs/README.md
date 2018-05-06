@@ -1,5 +1,5 @@
 # MrzhangF1ghterStudio 彩虹RainbowHAT系列
-# BUZZER蜂鸣器教程 （BCM2835 C库版本）
+# BUZZER蜂鸣器教程 （sysfs版本）
 
 ## 玩转代码
 > ### 在我们的彩虹扩展板上 4盏LED分别对应着一下GPIO引脚
@@ -167,9 +167,9 @@ clean:
 > 运行`make`即可编译
 > 相当于在终端里手动输入 gcc buzzer.c -o buzzer 
 > 若无错误，则将会生成目标文件名的可执行文件，如有错误，请根据编译器提示排错。<br>
-> 执行验证
-> `./目标文件名`
+> 执行验证,由于是sysfs，请用root权限打开
+> `sudo ./目标文件名`
 > 例<br>
-> `./led`
+> `sudo ./buzzer`
 > 按了回车后，你将会发现彩虹板上的蜂鸣器鸣叫10次后退出<br>
 > 按下`Ctrl+C`结束程序<br>
