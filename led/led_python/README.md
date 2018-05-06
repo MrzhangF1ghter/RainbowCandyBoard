@@ -74,7 +74,7 @@ led.clean();
 ## 玩
 > 当我们修改了Python版本代码后想运行时，保存后即可运行<br>
 > 执行验证
-> `./python 程序名`
-> 例:`./led_test.py`
+> `python 程序名`
+> 例:`python led_test.py`
 > 按了回车后，你将会发现彩虹板上的LED随着你的要求而亮灭<br>
 > 按下`Ctrl+C`结束程序<br>
