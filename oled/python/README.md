@@ -29,7 +29,7 @@
 RST = 25
 # Note the following are only used with SPI:
 DC = 24
-```<br>
+```
 > 若需要修改SPI引脚 请找到：<br>
 > `# disp = Adafruit_SSD1306.SSD1306_128_32(rst=RST, dc=DC, sclk=18, din=25, cs=22)`将#去掉，并把引脚修改成你oled所对应的引脚 <br>
 > 若需要修改成I2C 请将SPI相关代码注释掉并将I2C代码取消注释，详情请看源码注释。<br>
