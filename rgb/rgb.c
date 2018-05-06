@@ -1,3 +1,16 @@
+/********************************************************************************* 
+  *Copyright(C),MrzhangF1ghter studio
+  *FileName:rgb.c
+  *Author:MrzhangF1ghter 
+  *Version:1.0 
+  *Date:2018/5/5 
+  *Description:树莓派彩虹IO扩展板RGB代码 wiringPi 多线程方法实现。
+  *Others:Learn more from：https://github.com/MrzhangF1ghter/RainbowCandyBoard
+  												 http://www.airspayce.com/mikem/bcm2835/group__gpio.html
+  *Function List:
+  *History:
+  *compile:gcc -o key_event key_event.c -lbcm2835
+**********************************************************************************/ 
 #include <wiringPi.h>
 #include <softPwm.h>
 #include <stdio.h>
