@@ -1,8 +1,16 @@
-/* ds18b20.c
- * you can build this with something like:
- * gcc -Wall ds18b20.c -o ds18b20
- * sudo ./ds18b20
-*/
+/********************************************************************************* 
+  *Copyright(C),MrzhangF1ghter studio
+  *FileName:ds18b20.c
+  *Author:MrzhangF1ghter 
+  *Version:1.0 
+  *Date:2018/5/5 
+  *Description:树莓派彩虹ds18b20代码 文件系统版本
+  *Others:Learn more from：https://github.com/MrzhangF1ghter/RainbowCandyBoard
+  												
+  *Function List:
+  *History:
+  *compile:gcc -o ds18b20 ds18b20.c
+**********************************************************************************/ 
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
