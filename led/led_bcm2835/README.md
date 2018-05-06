@@ -21,7 +21,6 @@
 ```C
 #include <bcm2835.h>
 #include <stdio.h>
-#define PIN 26
 int main(int argc, char **argv)
 {
 	int leds_pin[4]={17,27,22,5};//定义一个存放led对应gpio引脚号的整形数组
@@ -39,7 +38,7 @@ int main(int argc, char **argv)
 		{
 			bcm2835_gpio_write(leds_pin[i], LOW);//低电平点亮
 			bcm2835_delay(500);//延时500ms
-	    bcm2835_gpio_write(leds_pin[i], HIGH);
+	    bcm2835_gpio_write(leds_pin[i], HIGH);//高电平熄灭
 	    bcm2835_delay(500);
 		}
 	}
@@ -57,6 +56,7 @@ led:led.c
 clean:
 	rm led
 ```
+> 你也可以手动输入`gcc -o led led.c -lbcm2835`编译,`-l`代表链接库 后面跟库名
 > 若无错误，则将会生成目标文件名的可执行文件，如有错误，请根据编译器提示排错。<br>
 > 执行验证
 > `./目标文件名`
