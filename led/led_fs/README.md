@@ -34,7 +34,6 @@
 #define LOW  0
 #define HIGH 1
 
-#define POUT            17//LED1
 #define BUFFER_MAX      3
 #define DIRECTION_MAX   48
 
@@ -43,8 +42,9 @@ static int GPIOExport(int pin)
     char buffer[BUFFER_MAX];
     int len;
     int fd;
-		//打开gpio相关文件export进行读写
-    fd = open("/sys/class/gpio/export", O_WRONLY);
+		/*访问/sys/class/gpio目录，向export文件写入GPIO编号，
+		使得该GPIO的操作接口从内核空间暴露到用户空间*/
+    fd = open("/sys/class/gpio/export", O_WRONLY);//暴露gpio操作接口
     if (fd < 0) {
         fprintf(stderr, "Failed to open export for writing!\n");
         return(-1);
@@ -58,7 +58,7 @@ static int GPIOExport(int pin)
     return(0);
 }
 
-static int GPIOUnexport(int pin)
+static int GPIOUnexport(int pin)//隐藏gpio接口
 {
     char buffer[BUFFER_MAX];
     int len;
@@ -77,7 +77,7 @@ static int GPIOUnexport(int pin)
     return(0);
 }
 
-static int GPIODirection(int pin, int dir)
+static int GPIODirection(int pin, int dir)//配置gpio方向
 {
     static const char dir_str[]  = "in\0out";
     char path[DIRECTION_MAX];
@@ -121,7 +121,7 @@ static int GPIORead(int pin)//读取gpio值
     return(atoi(value_str));
 }
 
-static int GPIOWrite(int pin, int value)//向指定io写值
+static int GPIOWrite(int pin, int value)//写值到特定gpio
 {
     static const char s_values_str[] = "01";
     char path[DIRECTION_MAX];
@@ -144,18 +144,28 @@ static int GPIOWrite(int pin, int value)//向指定io写值
 }
 
 int main(int argc, char *argv[])
-{
-    int i = 0;
-
-    GPIOExport(POUT);//设置宏定义POUT所定义的值
-    GPIODirection(POUT, OUT);//设置POUT引脚是输入还是输出
-
-    for (i = 0; i < 20; i++) {
-        GPIOWrite(POUT, i % 2);//写0和非0，实现高低电平翻转（亮灭共10次）
-        usleep(500 * 1000);
-    }
-
-    GPIOUnexport(POUT);
+{ 
+		int leds_pin[2]={17,27};//定义一个存放led对应gpio引脚号的整形数组
+		int i;
+		for(i=0;i<2;i++)
+		{
+			GPIOExport(leds_pin[i]);//暴露引脚列表里的gpio
+    	GPIODirection(leds_pin[i], OUT);//设置引脚为输出模式
+		}
+		while(1)
+		{
+			for(i=0;i<2;i++)
+			{
+				 GPIOWrite(leds_pin[i],LOW);
+				 usleep(200 * 1000);
+				 GPIOWrite(leds_pin[i],HIGH);
+				 usleep(200 * 1000);
+			}	
+		}
+		for(i=0;i<2;i++)
+		{
+			GPIOUnexport(leds_pin[i]);//隐藏引脚列表里的gpio
+		}
     return(0);
 }
 ```
@@ -170,13 +180,13 @@ clean:
 	rm led
 ```
 > 运行`make`即可编译
-> 相当于在终端里手动输入 gcc -o led led.c 
+> 相当于在终端里手动输入 `gcc -o led led.c` 编译
 > 若无错误，则将会生成目标文件名的可执行文件，如有错误，请根据编译器提示排错。<br>
 > 执行验证
 > `./目标文件名`
 > 例<br>
 > `./led`
-> 按了回车后，你将会发现彩虹板上的LED1闪烁10次后退出<br>
+> 按了回车后，你将会发现彩虹板上的LED1和LED2在快速闪烁<br>
 > 按下`Ctrl+C`结束程序<br>
 ## 扩展
 > 用户可以扩展使用自己的的LED进行亮灭，只需把对应跳帽拔掉，接上排线即可。请注意使用同一个电源（共地）
