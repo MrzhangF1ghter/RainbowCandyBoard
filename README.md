@@ -1,6 +1,7 @@
 # MrzhangF1ghterStudio 彩虹RainbowHAT系列
 ### 此仓库为彩虹系列扩展板源码与教程
 <img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/pic/function.jpg" width=50% height=50% /><br>
+# 彩虹开发板购买地址：https://shop145367846.taobao.com/
 ### 教程使用方法：
 ### 新手引导:
 > https://github.com/MrzhangF1ghter/RainbowCandyBoard/wiki
