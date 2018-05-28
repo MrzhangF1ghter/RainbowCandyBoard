@@ -6,7 +6,7 @@ import serial
 ser = serial.Serial("/dev/ttyS0",115200)
 
 print('serial test begin')
-ser.write("Hello Wrold !!!\n")
+ser.write("Hello World !!!\n")
 try:
 	while True:
 		ser.write(ser.read())

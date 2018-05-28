@@ -17,8 +17,8 @@
 
 #define uchar unsigned char
 
-#define LedPinRed    27
-#define LedPinGreen  28
+#define LedPinRed    28
+#define LedPinGreen  27
 #define LedPinBlue   29
 
 void ledInit(void)
