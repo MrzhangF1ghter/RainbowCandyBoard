@@ -1,0 +1,7 @@
+树莓派的SPI默认是关闭的（这一点和I2C类似），打开方法有多种，在这仅介绍一种
+vi /etc/modprobe.d/raspi-blacklist.conf
+注释掉两行表示启用SPI/I2C
+
+# blacklist spi and i2c by default (many users don't need them)
+   #blacklist spi-bcm2708
+   #blacklist i2c-bcm2708
