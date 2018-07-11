@@ -1,23 +1,24 @@
 # MrzhangF1ghterStudio 彩虹RainbowHAT系列
 # LED教程 （fs 文件操作版本）
-
+# 此代码为Rev2.0LED 例程
 ## 玩转代码
-> ### 在我们的彩虹扩展板上 4盏LED分别对应着一下GPIO引脚
+> ### 在我们的彩虹扩展板上 4盏LED分别对应着一下GPIO引脚（Rev2.0）
 > 灯   | GPIO | wPi |排针号|
 > |----|-----|-----|-----|
-> |LED1|BCM17|pin0 | 11 |    
-> |LED2|BCM27|pin2 |13  |
-> |LED3|BCM22|pin3 |15  |
-> |LED4|BCM5 |pin21|29  |
+> |LED1|BCM23|pin4 |16   |    
+> |LED2|BCM27|pin2 |13   |
+> |LED3|BCM22|pin3 |15   |
+> |LED4|BCM5 |pin21|29   |
 
 ### 原理图如下:
-[RainbowCandyBoard.pdf](https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/schematic/RainbowCandyBoard.pdf)<br>
-<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/led/schematic/LED.png" width=50% height=50%/><br>
-<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/led/schematic/led_pin.png" width=50% height=50%/><br>
+[RainbowCandyBoard.pdf](https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/schematic/RainbowCandyBoardRev2.0.pdf)<br>
+<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/led_BoardRev2.0/schematic/LED.png" width=50% height=50%/><br>
+<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/led_BoardRev2.0/schematic/led_pin.png" width=50% height=50%/><br>
 > 我们采用的是跳帽来连接IO口，你可以在彩虹板上看到有一排彩虹色的跳帽，找到LED1、LED2、LED3、LED4，那就是与IO连接的端口，具体端口号请看原理图。
 > 当我们想接自己io的时候，可以将跳帽拔开，那么板上的外设就和io口断开了，然后插上你想接的外设即可。
 
-首先先用gedit、puma、vim等文本编辑工具打开该文件夹下的led.c,如下，我们可以看看注释进行理解。
+
+首先先用gedit、pluma、vim等文本编辑工具打开该文件夹下的led.c,如下，我们可以看看注释进行理解。
 > 在Linux下，每个设备可以看做一个文件，比如LED我们可以看成一个文件，使用文件操作方法write(),read()，在内核中相关驱动将会将应用层的读写方法指向驱动中的读写方法，从而实现操作LED，对于用户来说，无需关心内核驱动如何实现，只需编写应用层软件即可。
 ```C
 #include <sys/stat.h>
@@ -145,16 +146,16 @@ static int GPIOWrite(int pin, int value)//写值到特定gpio
 
 int main(int argc, char *argv[])
 { 
-		int leds_pin[2]={17,27};//定义一个存放led对应gpio引脚号的整形数组
+		int leds_pin[4]={23,27,22,5};//定义一个存放led对应gpio引脚号的整形数组
 		int i;
-		for(i=0;i<2;i++)
+		for(i=0;i<4;i++)
 		{
 			GPIOExport(leds_pin[i]);//暴露引脚列表里的gpio
     	GPIODirection(leds_pin[i], OUT);//设置引脚为输出模式
 		}
 		while(1)
 		{
-			for(i=0;i<2;i++)
+			for(i=0;i<4;i++)
 			{
 				 GPIOWrite(leds_pin[i],LOW);
 				 usleep(200 * 1000);
@@ -162,7 +163,7 @@ int main(int argc, char *argv[])
 				 usleep(200 * 1000);
 			}	
 		}
-		for(i=0;i<2;i++)
+		for(i=0;i<4;i++)
 		{
 			GPIOUnexport(leds_pin[i]);//隐藏引脚列表里的gpio
 		}
@@ -190,4 +191,4 @@ clean:
 > 按下`Ctrl+C`结束程序<br>
 ## 扩展
 > 用户可以扩展使用自己的的LED进行亮灭，只需把对应跳帽拔掉，接上排线即可。请注意使用同一个电源（共地）
-> <img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/led/schematic/led_jumper.png" width=50% height=50%/><br>
+> <img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/led_BoardRev2.0/schematic/led_jumper.png" width=50% height=50%/><br>

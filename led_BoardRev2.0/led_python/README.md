@@ -1,24 +1,24 @@
 # MrzhangF1ghterStudio 彩虹RainbowHAT系列
 # LED教程 （Python版本）
-
+# 此代码为Rev2.0LED 例程
 ## 玩转代码
-> ### 在我们的彩虹扩展板上 4盏LED分别对应着一下GPIO引脚
+> ### 在我们的彩虹扩展板上 4盏LED分别对应着一下GPIO引脚（Rev2.0）
 > 灯   | GPIO | wPi |排针号|
 > |----|-----|-----|-----|
-> |LED1|BCM17|pin0 | 11 |    
-> |LED2|BCM27|pin2 |13  |
-> |LED3|BCM22|pin3 |15  |
-> |LED4|BCM5 |pin21|29  |
+> |LED1|BCM23|pin4 |16   |    
+> |LED2|BCM27|pin2 |13   |
+> |LED3|BCM22|pin3 |15   |
+> |LED4|BCM5 |pin21|29   |
 
 ### 原理图如下:
-[RainbowCandyBoard.pdf](https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/schematic/RainbowCandyBoard.pdf)<br>
-<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/led/schematic/LED.png" width=50% height=50%/><br>
-<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/led/schematic/led_pin.png" width=50% height=50%/><br>
+[RainbowCandyBoard.pdf](https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/schematic/RainbowCandyBoardRev2.0.pdf)<br>
+<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/led_BoardRev2.0/schematic/LED.png" width=50% height=50%/><br>
+<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/led_BoardRev2.0/schematic/led_pin.png" width=50% height=50%/><br>
 > 我们采用的是跳帽来连接IO口，你可以在彩虹板上看到有一排彩虹色的跳帽，找到LED1、LED2、LED3、LED4，那就是与IO连接的端口，具体端口号请看原理图。
-> 当我们想接自己io的时候，可以将跳帽拔开，那么板上的外设就和io口断开了，然后插上你想接的外设即可。
+> 当我们想接自己io的时候，可以将跳帽拔开，那么板上的外设就和io口断开了，然后插上你想接的外设即可。与IO连接的端口，具体端口号请看原理图。
 
 > Python版本中，我们将led看做一个模块，当我们要使用led的时候导入这个模块使用。`led.py`就是我们的模块，`led_test.py`就是我们的测试程序
-> 首先先用gedit、puma、vim等文本编辑工具打开该文件夹下的`led.py`,如下，我们可以看看注释进行理解。
+> 首先先用gedit、pluma、vim等文本编辑工具打开该文件夹下的`led.py`,如下，我们可以看看注释进行理解。
 > ### led模块 led.py 
 ```Python
 # -- coding: utf-8 --
@@ -26,7 +26,7 @@
 import RPi.GPIO as GPIO
 import time
 #定义一个存放led引脚号的列表
-leds_pin = [17,27,22,5];
+leds_pin = [23,27,22,5];
 
 def led_init():
 #设置引脚模式为BCM引脚号模式
