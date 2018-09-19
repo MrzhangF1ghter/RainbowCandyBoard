@@ -9,6 +9,7 @@
 1. 串口芯片更改为CH340C
 2. 更为牢固的MicroUSB接口
 3. 大部分采用smt工艺
+<br>
 <img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/pic/function.jpg" width=50% height=50% /><br>
 # 彩虹扩展板购买地址：https://shop145367846.taobao.com/
 ### 教程使用方法：
