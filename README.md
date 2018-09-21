@@ -12,6 +12,8 @@
 
 # <img src="https://img.alicdn.com/imgextra/i4/1887229091/O1CN012H1j5qj9inQPsWT_!!1887229091.jpg" /><br>
 # <img src="https://img.alicdn.com/imgextra/i4/1887229091/TB2MaoWb3HqK1RjSZFPXXcwapXa_!!1887229091.jpg"/><br>
+# <img src="https://img.alicdn.com/imgextra/i1/1887229091/O1CN012H1j5thYYWSOBCm_!!1887229091.png"/><br>
+
 
 # 彩虹扩展板购买地址：https://shop145367846.taobao.com/
 ### 教程使用方法：
