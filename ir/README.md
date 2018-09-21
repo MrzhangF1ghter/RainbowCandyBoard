@@ -12,18 +12,17 @@
 <div align=center>
   <img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ir/schematic/ir.png" width=50% height=50%/>
 </div>
-<br>
-### 硬件实物图如下：
+
+ ### 硬件实物图如下：
 <div align=center>
   <img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ir/schematic/IRPic.jpg" width=50% height=50%/>
 </div>
-<br>
-> 我们采用的是跳帽来连接红外收发口，你可以在彩虹板的右下角看到有两个跳帽，分别写着IR_TX,IR_RX,那红外收发管与IO连接的端口，拔掉即断开与红外收发口的连接。<br>
+ > 我们采用的是跳帽来连接红外收发口，你可以在彩虹板的右下角看到有两个跳帽，分别写着IR_TX,IR_RX,那红外收发管与IO连接的端口，拔掉即断开与红外收发口的连接。<br>
 <div align=center>
   <img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ir/schematic/IRJumper.jpg" width=50% height=50%/>
 </div>
-<br>
-> 当我们想接自己io的时候，可以将跳帽拔开，那么板上的外设就和io口断开了，然后插上你想接的外设即可。
+
+ > 当我们想接自己io的时候，可以将跳帽拔开，那么板上的外设就和io口断开了，然后插上你想接的外设即可。
 ## 玩
 > 当我们修改了代码后想运行时，必须将其编译成可执行文件，在此我们需要用到gcc工具，树莓派默认已安装好，若无，则百度相关教程安装好<br>
 > 编译指令如下 `gcc -o 目标文件名 源文件名` -o的意思为输出可执行文件<br>
