@@ -12,7 +12,7 @@
 <img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ir/schematic/ir.png" width=50% height=50%/><br><br>
 ### 硬件实物图如下：
 <img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ir/schematic/IRPic.jpg" width=50% height=50%/><br><br>
-> 我们采用的是跳帽来连接红外收发口，你可以在彩虹板的右下角看到有两个跳帽，分别写着IR_TX,IR_RX,那红外收发管与IO连接的端口，拔掉即断开与红外收发口的连接。
+> 我们采用的是跳帽来连接红外收发口，你可以在彩虹板的右下角看到有两个跳帽，分别写着IR_TX,IR_RX,那红外收发管与IO连接的端口，拔掉即断开与红外收发口的连接。<br>
 <img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ir/schematic/IRJumper.jpg" width=50% height=50%/><br><br>
 > 当我们想接自己io的时候，可以将跳帽拔开，那么板上的外设就和io口断开了，然后插上你想接的外设即可。
 
