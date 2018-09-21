@@ -10,7 +10,9 @@
 2. 更为牢固的MicroUSB接口
 3. 大部分采用smt工艺
 
-# <img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/pic/function.jpg" width=50% height=50% /><br>
+# <img src="https://img.alicdn.com/imgextra/i4/1887229091/O1CN012H1j5qj9inQPsWT_!!1887229091.jpg" width=50% height=50% /><br>
+# <img src="https://img.alicdn.com/imgextra/i4/1887229091/TB2MaoWb3HqK1RjSZFPXXcwapXa_!!1887229091.jpg" width=50% height=50% /><br>
+
 # 彩虹扩展板购买地址：https://shop145367846.taobao.com/
 ### 教程使用方法：
 ### 新手引导:
