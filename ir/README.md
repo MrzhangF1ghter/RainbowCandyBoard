@@ -1,14 +1,14 @@
 # MrzhangF1ghterStudio 彩虹扩展板RainbowCandyBoard系列
 # 红外收发教程
 ## 功能说明
-1.  红外线接收功能
-工作频率：38K HZ
-接收距离：18-20m
-接收角度：+/-45度
-2.  红外线发射功能
-    双管发射，多方位覆盖
-波长：940nm
-发射距离：7-8m *2    
+#### 红外线接收功能
+- 工作频率：38K HZ
+- 接收距离：18-20m
+- 接收角度：+/-45度
+#### 红外线发射功能
+- 双管发射，多方位覆盖
+- 波长：940nm
+- 发射距离：7-8m *2    
 
 ## 玩转模块
 > 通过红外收发模块，我们可以轻松实现树莓派控制家电等等功能。  
@@ -19,32 +19,31 @@
 > |红外发射管|BCM17|pin0|11|
 > |红外接收管|BCM7|pin11|26|
 
-### 原理图如下:
+#### 原理图如下:
 [RainbowCandyBoard.pdf](https://github.com/MrzhangF1ghter/RainbowCandyBoard/tree/master/schematic/RainbowCandyBoardRev2.0.pdf)  
 <div align=center>
   <img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ir/schematic/ir.png" width=50% height=50%/>
 </div>  
 
- ### 硬件实物图如下：
+#### 硬件实物图如下：
 <div align=center>
   <img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ir/schematic/IRPic.jpg" width=50% height=50%/>
 </div>  
 <div align=center>
   <img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ir/schematic/IRJumper.jpg" width=50% height=50%/>
 </div>  
-
-> 我们采用的是跳帽来连接红外收发口，你可以在彩虹板的右下角看到有两个跳帽，分别写着IR_TX,IR_RX,那红外收发管与IO连接的端口，拔掉即断开与红外收发口的连接。  
-> 当我们想接自己io的时候，可以将跳帽拔开，那么板上的外设就和io口断开了，然后插上你想接的外设即可。  
-## 配置
+    我们采用的是跳帽来连接红外收发口，你可以在彩虹板的右下角看到有两个跳帽，分别写着IR_TX,IR_RX,那红外收发管与IO连接的端口，拔掉即断开与红外收发口的连接。  
+    当我们想接自己io的时候，可以将跳帽拔开，那么板上的外设就和io口断开了，然后插上你想接的外设即可。  
+### 配置
 在Linux下，我们采用LIRC (Linux Infrared remote control)这个开源的软件包，该软件包能让Linux接收及发送红外信号，下面讲解如何使用   
-### 1.安装
-> `apt-get install lirc`
-### 2.配置Config.txt
-> 网上的大多数教程已经过时，在0.9.4c版本中，我们只需要配置该文件即可   
-> 编辑`/boot/config.txt`,加入下列代码,功能是声明引脚，在扩展板中 发射管对应的是GPIO17，接收管对应的是GPIO7     
-> `dtoverlay=lirc-rpi,gpio_out_pin=17,gpio_in_pin=7,gpio_in_pull=up`
-### 3.修改默认驱动
-> 编辑`/etc/lirc/lirc_options.conf`
+#### 1.安装
+    `apt-get install lirc`
+#### 2.配置Config.txt
+    网上的大多数教程已经过时，在0.9.4c版本中，我们只需要配置该文件即可   
+    编辑`/boot/config.txt`,加入下列代码,功能是声明引脚，在扩展板中 发射管对应的是GPIO17，接收管对应的是GPIO7     
+    `dtoverlay=lirc-rpi,gpio_out_pin=17,gpio_in_pin=7,gpio_in_pull=up`
+#### 3.修改默认驱动
+    编辑`/etc/lirc/lirc_options.conf`
 ```
 driver  = devinput
 device  = auto
