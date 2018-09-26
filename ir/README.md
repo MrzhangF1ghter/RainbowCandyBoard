@@ -11,13 +11,13 @@
 - 发射距离：7-8m *2    
 
 ## 玩转模块
-> 通过红外收发模块，我们可以轻松实现树莓派控制家电等等功能。  
-> 在我们的彩虹扩展板上 共有两个红外发射管，分别向不同方向发射，一个红外接收管，用来接收红外信号。硬件连接如下：    
+  通过红外收发模块，我们可以轻松实现树莓派控制家电等等功能。  
+  在我们的彩虹扩展板上 共有两个红外发射管，分别向不同方向发射，一个红外接收管，用来接收红外信号。硬件连接如下：    
 
-> 红外收发| GPIO | wPi |排针号|
-> |----|-----|-----|-----|
-> |红外发射管|BCM17|pin0|11|
-> |红外接收管|BCM7|pin11|26|
+     红外收发| GPIO | wPi |排针号|
+  |----|-----|-----|-----|
+  |红外发射管|BCM17|pin0|11|
+  |红外接收管|BCM7|pin11|26|
 
 #### 原理图如下:
 [RainbowCandyBoard.pdf](https://github.com/MrzhangF1ghter/RainbowCandyBoard/tree/master/schematic/RainbowCandyBoardRev2.0.pdf)  
@@ -33,7 +33,8 @@
   <img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ir/schematic/IRJumper.jpg" width=50% height=50%/>
 </div>
 
-    我们采用的是跳帽来连接红外收发口，你可以在彩虹板的右下角看到有两个跳帽，分别写着IR_TX,IR_RX,那红外收发管与IO连接的端口，拔掉即断开与红外收发口的连接。当我们想接自己io的时候，可以将跳帽拔开，那么板上的外设就和io口断开了，然后插上你想接的外设即可。  
+    我们采用的是跳帽来连接红外收发口，你可以在彩虹板的右下角看到有两个跳帽，分别写着IR_TX,IR_RX,那红外收发管与IO连接的端口，拔掉即断开与红外收发口的连接。
+    当我们想接自己io的时候，可以将跳帽拔开，那么板上的外设就和io口断开了，然后插上你想接的外设即可。  
 ### 配置
 在Linux下，我们采用LIRC (Linux Infrared remote control)这个开源的软件包，该软件包能让Linux接收及发送红外信号，下面讲解如何使用   
 #### 1.安装
