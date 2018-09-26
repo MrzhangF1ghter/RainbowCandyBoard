@@ -14,7 +14,7 @@
   通过红外收发模块，我们可以轻松实现树莓派控制家电等等功能。  
   在我们的彩虹扩展板上 共有两个红外发射管，分别向不同方向发射，一个红外接收管，用来接收红外信号。硬件连接如下：    
 
-     红外收发| GPIO | wPi |排针号|
+  红外收发| GPIO | wPi |排针号|
   |----|-----|-----|-----|
   |红外发射管|BCM17|pin0|11|
   |红外接收管|BCM7|pin11|26|
@@ -33,7 +33,8 @@
   <img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ir/schematic/IRJumper.jpg" width=50% height=50%/>
 </div>
 
-    我们采用的是跳帽来连接红外收发口，你可以在彩虹板的右下角看到有两个跳帽，分别写着IR_TX,IR_RX,那红外收发管与IO连接的端口，拔掉即断开与红外收发口的连接。
+    我们采用的是跳帽来连接红外收发口，你可以在彩虹板的右下角看到有两个跳帽，分别写着IR_TX,IR_RX,
+    那红外收发管与IO连接的端口，拔掉即断开与红外收发口的连接。
     当我们想接自己io的时候，可以将跳帽拔开，那么板上的外设就和io口断开了，然后插上你想接的外设即可。  
 ### 配置
 在Linux下，我们采用LIRC (Linux Infrared remote control)这个开源的软件包，该软件包能让Linux接收及发送红外信号，下面讲解如何使用   
@@ -93,9 +94,14 @@ space 1632
 <div align=center><img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ir/schematic/4.png" width=50% height=50%/></div>  
 5.上面操作完成后，正式进入录制按键阶段，程序提示我们输入按键名称（这个名称要在前面所列明的名字中选），我们输入btn_1,然后按下按键，注意，此时的按键不要长按，按下松开即可，录制成功后会提示录制下一个按键，直到你想要录制的按键全部录完为止，录完后按回车，然后提示验证bit mask，按下按键即可  
 <div align=center><img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ir/schematic/5.png" width=50% height=50%/></div>  
-验证成功后，我们的录制就完成了  
+
+    验证成功后，我们的录制就完成了  
 <div align=center><img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ir/schematic/6.png" width=50% height=50%/></div>  
-将我们录制好的配置文件拷贝到`sudo cp ./remote1.lircd.conf /etc/lirc/lircd.conf.d`中即可  
-我们可以通过执行`irsend list remote1 ""`来查询我们刚才录制的红外信号内容。 remote1是我们刚才所设定的文件名称， ""代表全部显示  
-接下来我们就可以发送了，比如我们发送按键1 则输入`irsend SEND_ONCE remote1 btn_1`即可  
+
+    将我们录制好的配置文件拷贝到`sudo cp ./remote1.lircd.conf /etc/lirc/lircd.conf.d`中即可  
+    
+    我们可以通过执行`irsend list remote1 ""`来查询我们刚才录制的红外信号内容。 remote1是我们刚才所设定的文件名称， ""代表全部显示  
+    
+    接下来我们就可以发送了，比如我们发送按键1 则输入`irsend SEND_ONCE remote1 btn_1`即可  
+    
 ### 注意，不同遥控器有不同的编码方式，有些并不支持上面的录制方法 而是要用raw格式来录制，详情请查阅百度
