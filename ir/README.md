@@ -77,6 +77,14 @@ space 535
 pulse 644
 space 1632
 ```
+## 录制红外数据
+> 停止LIRC:`sudo /etc/init.d/lircd stop`
+> 执行命令`irrecord –list-namespace`查询可用的按键名称，之后我们就用这些名称来录制自己的内容(请注意 list前面是两个-)<br>
+> 执行红外录制指令`irrecord -d /dev/lirc0 ~/remote1.conf ` 我们这里的遥控器名称为remote1（这个自定义）<br>
+> 1.
+> 将我们录制好的配置文件拷贝到`sudo cp ./remote1.lircd.conf /etc/lirc/lircd.conf.d`中即可<br>
+> 我们可以通过执行`irsend list remote1 ""`来查询我们刚才录制的红外信号内容。 remote1是我们刚才所设定的文件名称， ""代表全部显示<br>
+> 接下来我们就可以发送了，比如我们发送按键1 则输入`irsend SEND_ONCE remote1 btn_1`即可<br>
 ## 玩
 > 当我们修改了代码后想运行时，必须将其编译成可执行文件，在此我们需要用到gcc工具，树莓派默认已安装好，若无，则百度相关教程安装好<br>
 > 编译指令如下 `gcc -o 目标文件名 源文件名` -o的意思为输出可执行文件<br>
