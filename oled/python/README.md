@@ -20,6 +20,7 @@
 ### 该Python版本是使用开源库Adafruit_Python_SSD1306,下面是安装教程
 > `sudo python setup.py install`<br>
 > 终端最后显示`Finished processing dependencies for Adafruit-SSD1306xxxx`则代表安装成功了<br>
+### 请先参考wiki将python环境搭好！！！还有打开spi！！
 ### 使用：
 > 在example文件里有很多例子程序 只需要`python xxxx.py &`即可执行了，其中&代表后台执行<br>
 > 例子:`python stats.py &`则oled会显示当前系统信息 <br> 
