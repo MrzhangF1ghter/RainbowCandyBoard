@@ -12,9 +12,9 @@
 > |SCLK|BCM11|pin14| 24 |
 
 ### 原理图如下:
-[RainbowCandyBoard.pdf](https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/schematic/RainbowCandyBoard.pdf)<br>
-<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/oled/schematic/oled.png" width=50% height=50%/><br>
-<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/oled/schematic/oled_pin.png" width=50% height=50%/><br>
+[RainbowCandyBoard.pdf](https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/schematic/RainbowCandyBoard_Rev2.0.pdf)<br>
+<img src="https://img.alicdn.com/imgextra/i4/1887229091/O1CN012H1j5v3ubB4xd0b_!!1887229091.png" width=50% height=50%/><br>
+<img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j61VdOvRX9Yx_!!1887229091.png" width=50% height=50%/><br>
 > 用户可自行更换OLED显示屏，为7pin spi接口的 0.96寸128x64分辨率。<br>
 
 ### 该Python版本是使用开源库Adafruit_Python_SSD1306,下面是安装教程
