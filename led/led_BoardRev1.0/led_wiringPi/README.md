@@ -12,8 +12,8 @@
 
 ### 原理图如下:
 [RainbowCandyBoard.pdf](https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/schematic/RainbowCandyBoard.pdf)<br>
-<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/led/schematic/LED.png" width=50% height=50%/><br>
-<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/led/schematic/led_pin.png" width=50% height=50%/><br>
+<img src="https://img.alicdn.com/imgextra/i1/1887229091/O1CN012H1j61jqMiwQ6zQ_!!1887229091.png" width=50% height=50%/><br>
+<img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j62Njfn3efpH_!!1887229091.png" width=50% height=50%/><br>
 > 我们采用的是跳帽来连接IO口，你可以在彩虹板上看到有一排彩虹色的跳帽，找到LED1、LED2、LED3、LED4，那就是与IO连接的端口，具体端口号请看原理图。
 > 当我们想接自己io的时候，可以将跳帽拔开，那么板上的外设就和io口断开了，然后插上你想接的外设即可。
 
