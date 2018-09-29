@@ -8,7 +8,7 @@
 
 ### 原理图如下:
 [RainbowCandyBoard.pdf](https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/schematic/RainbowCandyBoardRev2.0.pdf)  
-<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/fan/schematic/Fan.png" width=50% height=50%/><br>  
+<img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j5v3ekuvLJA2_!!1887229091.png" width=50% height=50%/><br>  
 
 > 如果你收到的是2p引脚的风扇，请按能看到金属触点一面朝上，靠左插入。  
 <img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/fan/schematic/socket.png" width=50% height=50%/><br>  
