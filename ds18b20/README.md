@@ -6,9 +6,9 @@
 > |----|-----|-----|-----|
 > |DS18B20|BCM4|pin7| 4  |    
 ### 原理图如下:
-[RainbowCandyBoard.pdf](https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/schematic/RainbowCandyBoard.pdf)<br>
-<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ds18b20/schematic/ds18b20.png" width=50% height=50%/><br>
-<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ds18b20/schematic/1wire.png" width=50% height=50%/><br>
+[RainbowCandyBoard.pdf](https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/schematic/RainbowCandyBoard_Rev2.0.pdf)<br>
+<img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j61lkVzAaTxe_!!1887229091.png" width=50% height=50%/><br>
+<img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j5zNKVW8O3TU_!!1887229091.png" width=50% height=50%/><br>
 # 准备工作
 
 ### 修改配置文件:
