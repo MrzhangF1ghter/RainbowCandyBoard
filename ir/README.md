@@ -22,15 +22,15 @@
 #### 原理图如下:
 [RainbowCandyBoard.pdf](https://github.com/MrzhangF1ghter/RainbowCandyBoard/tree/master/schematic/RainbowCandyBoardRev2.0.pdf)  
 <div align=center>
-  <img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ir/schematic/ir.png" width=50% height=50%/>
+  <img src="https://img.alicdn.com/imgextra/i4/1887229091/O1CN012H1j609wBDDzzwl_!!1887229091.png" width=50% height=50%/>
 </div>  
 
 #### 硬件实物图如下：
 <div align=center>
-  <img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ir/schematic/IRPic.jpg" width=50% height=50%/>
+  <img src="https://img.alicdn.com/imgextra/i3/1887229091/O1CN012H1j61PBiKh3XBZ_!!1887229091.jpg" width=50% height=50%/>
 </div>  
 <div align=center>
-  <img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ir/schematic/IRJumper.jpg" width=50% height=50%/>
+  <img src="https://img.alicdn.com/imgextra/i4/1887229091/O1CN012H1j61VOMf1YX1X_!!1887229091.jpg" width=50% height=50%/>
 </div>
 
     我们采用的是跳帽来连接红外收发口，你可以在彩虹板的右下角看到有两个跳帽，分别写着IR_TX,IR_RX,
@@ -87,24 +87,24 @@ space 1632
     
     1.输入上面的指令后我们会看到提示按下回车继续，那我们按下回车  
 
-<div><img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ir/schematic/1.png" width=50% height=50%/></div>  
+<div><img src="https://img.alicdn.com/imgextra/i1/1887229091/O1CN012H1j61VOhTHpogj_!!1887229091.png" width=50% height=50%/></div>  
 
     2.按下之后会提示先不要看下任何按键，因为这个步骤是检查环境光是否有红外干扰，当检查完毕后，会提示输入我们遥控器文件的名称，这里以remote1为例  
 
-<div><img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ir/schematic/2.png" width=50% height=50%/></div>  
+<div><img src="https://img.alicdn.com/imgextra/i4/1887229091/O1CN012H1j61yv59DIxab_!!1887229091.png" width=50% height=50%/></div>  
 
     3.按下回车后，我们任意按下遥控器上的按键，注意这时每次按下的时间大概在1秒左右，然后松开然后继续按其他按键，同一个按键不能按超过十个点，每按下一次都会打印一个点出来，直到两行点填满以后，将会进入验证阶段    
 
-<div><img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ir/schematic/3.png" width=50% height=50%/></div>  
+<div><img src="https://img.alicdn.com/imgextra/i3/1887229091/O1CN012H1j61jcwCPP8sv_!!1887229091.png" width=50% height=50%/></div>  
 
     4.此时重复以上步骤直到验证成功（点数不一定确定）  
-<div><img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ir/schematic/4.png" width=50% height=50%/></div>  
+<div><img src="https://img.alicdn.com/imgextra/i1/1887229091/O1CN012H1j5zj7rSIic9D_!!1887229091.png" width=50% height=50%/></div>  
 
     5.上面操作完成后，正式进入录制按键阶段，程序提示我们输入按键名称（这个名称要在前面所列明的名字中选），我们输入btn_1,然后按下按键，注意，此时的按键不要长按，按下松开即可，录制成功后会提示录制下一个按键，直到你想要录制的按键全部录完为止，录完后按回车，然后提示验证bit mask，按下按键即可  
-<div><img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ir/schematic/5.png" width=50% height=50%/></div>  
+<div><img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j61lpUAbKzeH_!!1887229091.png" width=50% height=50%/></div>  
 
     验证成功后，我们的录制就完成了  
-<div><img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/ir/schematic/6.png" width=50% height=50%/></div>  
+<div><img src="https://img.alicdn.com/imgextra/i4/1887229091/O1CN012H1j61lrIL9Sun9_!!1887229091.png" width=50% height=50%/></div>  
 
     将我们录制好的配置文件拷贝到`sudo cp ./remote1.lircd.conf /etc/lirc/lircd.conf.d`中即可  
     
