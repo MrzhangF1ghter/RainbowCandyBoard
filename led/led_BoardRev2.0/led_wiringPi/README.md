@@ -64,4 +64,3 @@ int main()
 > 按下`Ctrl+C`结束程序<br>
 ## 扩展
 > 用户可以扩展使用自己的的LED进行亮灭，只需把对应跳帽拔掉，接上排线即可。请注意使用同一个电源（共地）
-> <img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/led_BoardRev2.0/schematic/led_jumper.png" width=50% height=50%/><br>
