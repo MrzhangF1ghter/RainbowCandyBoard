@@ -12,9 +12,9 @@
 > |SCLK|BCM11|pin14| 24 |
 
 ### 原理图如下:
-[RainbowCandyBoard.pdf](https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/schematic/RainbowCandyBoard.pdf)<br>
-<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/oled/schematic/oled.png" width=50% height=50%/><br>
-<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/oled/schematic/oled_pin.png" width=50% height=50%/><br>
+[RainbowCandyBoard.pdf](https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/schematic/RainbowCandyBoard_Rev2.0.pdf)<br>
+<img src="https://img.alicdn.com/imgextra/i4/1887229091/O1CN012H1j5v3ubB4xd0b_!!1887229091.png" width=50% height=50%/><br>
+<img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j61VdOvRX9Yx_!!1887229091.png" width=50% height=50%/><br>
 > 用户可自行更换OLED显示屏，为7pin spi接口的 0.96寸128x64分辨率。
 > 由于代码庞大，只展现主文件，oled具体实现可自行阅读理解，也可以学习arduino、stm32相关教程，触类旁通。
 首先先用gedit、pluma、vim等文本编辑工具打开该文件夹下的led.c,如下，我们可以看看注释进行理解。
