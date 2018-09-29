@@ -11,10 +11,10 @@
 <img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j5v3ekuvLJA2_!!1887229091.png" width=50% height=50%/><br>  
 
 > 如果你收到的是2p引脚的风扇，请按能看到金属触点一面朝上，靠左插入。  
-<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/fan/schematic/socket.png" width=50% height=50%/><br>  
+<img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j61jbzlF53r5_!!1887229091.png" width=50% height=50%/><br>  
 > 请将风扇底部的散热垫保护膜撕开，然后将风扇对准CPU中心贴上去即可  请清洁后进行，
 > 我们的风扇具有两个控制模式，一个是全速模式，一个是程序温控模式，可以通过跳帽选择，默认跳帽为程控模式，若需全速模式，则将跳帽接到FAN_CTL的右边两个排针  
-<img src="https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/fan/schematic/fan_ctl.png" width=50% height=50%/><br>  
+<img src="https://img.alicdn.com/imgextra/i3/1887229091/O1CN012H1j5zNNX1UdwQM_!!1887229091.png" width=50% height=50%/><br>  
 > 当我们想接自己io的时候，可以将FAN_SPEED跳帽拔开，那么板上的外设就和io口断开了，然后插上你想接的外设即可。
 
 首先先用gedit、pluma、vim等文本编辑工具打开该文件夹下的fan.c,如下，我们可以看看注释进行理解。
