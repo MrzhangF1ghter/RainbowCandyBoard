@@ -8,5 +8,7 @@
 
 注：如果是树莓派3B，板载的串口ttyAMA0作为蓝牙使用，用户串口端口改为ttySO。如下程序也类似，如果是到的树莓派3B,ttyAMA0需改为ttyS0。
 
-
+[RainbowCandyBoard.pdf](https://github.com/MrzhangF1ghter/RainbowCandyBoard/blob/master/schematic/RainbowCandyBoard_Rev2.0.pdf)<br>
+<img src="https://img.alicdn.com/imgextra/i4/1887229091/O1CN012H1j62SbmCMZ7bT_!!1887229091.png" width=50% height=50%/><br>
+<img src="https://img.alicdn.com/imgextra/i3/1887229091/O1CN012H1j61aNzLFVnFZ_!!1887229091.png" width=50% height=50%/><br>
 
