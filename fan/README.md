@@ -1,6 +1,6 @@
 # MrzhangF1ghterStudio 彩虹扩展板系列
 # 温控风扇教程 （wiringPi版本）
-## 玩转代码
+## 玩转代码（温控）
 > ### 在我们的彩虹扩展板上 我们的风扇接到了树莓派唯一的一个原生PWM引脚，这样的好处是，我们不用软件模拟pwm，而是用硬件pwm，不耗费宝贵cpu资源
 > 风扇| GPIO | wPi |排针号|
 > |----|-----|-----|-----|
@@ -92,14 +92,22 @@ int main(void)
 
 }
 ```
-## 玩
+### 玩
 > 当我们修改了代码后想运行时，必须将其编译成可执行文件，在此我们需要用到gcc工具，树莓派默认已安装好，若无，则百度相关教程安装好<br>
 > 编译指令如下 `gcc -o 目标文件名 源文件名` -o的意思为输出可执行文件<br>
-> 例:`gcc -o myled fan.c -lwiringPi` <br>
+> 例:`gcc -o fan_ctl fan_ctl.c -lwiringPi` <br>
 > 若无错误，则将会生成目标文件名的可执行文件，如有错误，请根据编译器提示排错。<br>
 > 执行验证
 > `./目标文件名`
 > 例<br>
-> `sudo ./fan &`
+> `sudo ./fan_ctl &` 由于pwm需要用到超级用户权限，请用root权限运行
 > 按了回车后，风扇将根据CPU温度而调整转速
 > 按下`Ctrl+C`结束程序<br>
+### 玩·超频
+	在风扇的力压下，不超频正常情况下能在40度左右盘旋，风扇以非常低的速度运转，在满负荷1.4Ghz情况下，温度不超过55度。相比不加风扇而言，降温接近10度！
+空闲状态:
+	<img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j61P9hNaXkm0_!!1887229091.png" width=50% height=50%/><br>  
+
+### 开机启动
+> 开机启动很简单 只需要编辑rc.local文件,在exit 0之前添加执行程序路径即可 `/home/pi/RainbowCandyBoard/Fan/wiringPi/fan_ctl` //若程序不是可执行权限，请chmod 777 fan_ctl
+
