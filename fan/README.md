@@ -104,10 +104,83 @@ int main(void)
 > 按了回车后，风扇将根据CPU温度而调整转速
 > 按下`Ctrl+C`结束程序<br>
 ### 玩·超频
-	在风扇的力压下，不超频正常情况下能在40度左右盘旋，风扇以非常低的速度运转，在满负荷1.4Ghz情况下，温度不超过55度。相比不加风扇而言，降温接近10度！
-空闲状态:
-	<img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j61P9hNaXkm0_!!1887229091.png" width=50% height=50%/><br>  
+> 在风扇的力压下，不超频正常情况下能在40度左右盘旋，风扇以非常低的速度运转，在满负荷1.4Ghz情况下，温度不超过55度。相比不加风扇满负荷在70多度而言，降温接近20度！
+> 不带温控风扇空闲状态：
+> <img src="https://img.alicdn.com/imgextra/i4/1887229091/O1CN012H1j64F7FBAqcAS_!!1887229091.png" width=50% height=50%/><br>  
+> 不带温控风扇满负荷状态：
+> <img src="https://img.alicdn.com/imgextra/i4/1887229091/O1CN012H1j63af5lwbOhg_!!1887229091.png" width=50% height=50%/><br>  
+> 温控风扇下空闲状态:
+> <img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j61P9hNaXkm0_!!1887229091.png" width=50% height=50%/><br>  
+温控风扇下满负荷状态:
+> <img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j5v3ektd8yDb_!!1887229091.png" width=50% height=50%/><br> 
+#### 超频
+> 树莓派超频需谨慎！每个板子的素质有所不同，请自行调整
+> 我们采用sysbench来进行跑分测试，请先`apt-get install sysbench`安装工具
+> 运行`sysbench --test=cpu --cpu-max-prime=20000 --num-threads=4 run`进行性能测试
+> 此时我们可以通过查询/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq文件获得当前CPU频率
+> `sudo cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq`
+> 其实也可以执行fan_ctl就可以查看当前评论了，在代码中我也将当前频率打出来了
+> 我的3B+在默认评率下跑分在 103左右(在)
+> <img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j62NUdLcHAD4_!!1887229091.png" width=50% height=50%/><br>
 
+> 我们通过修改/boot/config.txt文件即可超频，树莓派3B+最高可以超到1.6Ghz，树莓派3B最高可以超到1.4Ghz再高也上不去了。其中术语如下,超频方案参数在文末。
+```
+arm_freq=CPU频率
+gpu_freq=GPU频率
+core_freq=核心频率
+sdram_freq=内存频率
+sdram_schmoo=0x02000020
+over_voltage=CPU电压步进值
+sdram_over_voltage=内存电压步进值
+```
+> 在1.6Ghz最高频率下，跑分跑到了93秒左右的成绩（越短越好）,提升约10秒的时间，在温控风扇的力压下，仍不超过60度
+> <img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j5zNO4FWrZXH_!!1887229091.png" width=50% height=50%/><br> 
+> 我们在config.txt的末尾添加我们的超频参数，重启即可生效，下面是提供的超频方案，请按需选择(树莓派3B+)树莓派3B最高频率不要超过1450，其他相同
+> 1.45Ghz带GPU超频方案
+```
+arm_freq=1500
+gpu_freq=500
+core_freq=500
+sdram_freq=500
+sdram_schmoo=0x02000020
+over_voltage=2
+sdram_over_voltage=2
+```
+> 1.5Ghz不带GPU超频方案
+```
+arm_freq=1500
+over_voltage=6
+```
+> 1.5Ghz带GPU超频方案
+```
+arm_freq=1500
+gpu_freq=500
+core_freq=500
+sdram_freq=500
+sdram_schmoo=0x02000020
+over_voltage=6
+sdram_over_voltage=2
+```
+> 1.57Ghz带GPU超频方案
+```
+arm_freq=1575
+gpu_freq=500
+core_freq=500
+sdram_freq=500
+sdram_schmoo=0x02000020
+over_voltage=6
+sdram_over_voltage=2
+```
+> 1.6Ghz带GPU超频方案
+```
+arm_freq=1600
+gpu_freq=500
+core_freq=500
+sdram_freq=500
+sdram_schmoo=0x02000020
+over_voltage=6
+sdram_over_voltage=2
+```
 ### 开机启动
 > 开机启动很简单 只需要编辑rc.local文件,在exit 0之前添加执行程序路径即可 `/home/pi/RainbowCandyBoard/Fan/wiringPi/fan_ctl` //若程序不是可执行权限，请chmod 777 fan_ctl
 
