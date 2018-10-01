@@ -115,13 +115,13 @@ int main(void)
 ### 玩·超频
 > 在风扇的力压下，不超频正常情况下能在40度左右盘旋，风扇以非常低的速度运转，在满负荷1.4Ghz情况下，温度不超过55度。相比不加风扇满负荷在70多度而言，降温接近20度！   
 > 不带温控风扇空闲状态：     
-> <img src="https://img.alicdn.com/imgextra/i4/1887229091/O1CN012H1j64F7FBAqcAS_!!1887229091.png" width=50% height=50%/><br>  
+> <div ><img src="https://img.alicdn.com/imgextra/i4/1887229091/O1CN012H1j64F7FBAqcAS_!!1887229091.png" width=100% height=50%/></div><br>  
 > 不带温控风扇满负荷状态：    
-> <img src="https://img.alicdn.com/imgextra/i4/1887229091/O1CN012H1j63af5lwbOhg_!!1887229091.png" width=50% height=50%/><br>  
+> <img src="https://img.alicdn.com/imgextra/i4/1887229091/O1CN012H1j63af5lwbOhg_!!1887229091.png" width=100% height=50%/><br>  
 > 温控风扇下空闲状态:     
-> <img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j61P9hNaXkm0_!!1887229091.png" width=50% height=50%/><br>  
+> <img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j61P9hNaXkm0_!!1887229091.png" width=100% height=50%/><br>  
 温控风扇下满负荷状态:    
-> <img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j5v3ektd8yDb_!!1887229091.png" width=50% height=50%/><br> 
+> <img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j5v3ektd8yDb_!!1887229091.png" width=100% height=50%/><br> 
 #### 超频
 > 树莓派超频需谨慎！每个板子的素质有所不同，请自行调整
 > 我们采用sysbench来进行跑分测试，请先`apt-get install sysbench`安装工具
@@ -130,7 +130,7 @@ int main(void)
 > `sudo cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq`
 > 其实也可以执行fan_ctl就可以查看当前评论了，在代码中我也将当前频率打出来了
 > 我的3B+在默认评率下跑分在 103左右(在)
-> <img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j62NUdLcHAD4_!!1887229091.png" width=50% height=50%/><br>
+> <img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j62NUdLcHAD4_!!1887229091.png" width=100% height=50%/><br>
 
 > 我们通过修改/boot/config.txt文件即可超频，树莓派3B+最高可以超到1.6Ghz，树莓派3B最高可以超到1.4Ghz再高也上不去了。其中术语如下,超频方案参数在文末。
 ```
