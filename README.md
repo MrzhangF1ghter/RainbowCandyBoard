@@ -24,47 +24,47 @@
 ### 源码文件结构
 ```
 .
-├── buzzer
-│   ├── buzzer_bcm2835
-│   ├── buzzer_fs
-│   ├── buzzer_python
-│   ├── buzzer_shell
-│   ├── buzzer_wriringPi
-│   └── schematic
-├── ds18b20
-│   ├── fs
-│   ├── python
-│   └── schematic
-├── key
-│   ├── key_bcm2835
-│   ├── key_python
-│   ├── key_wriringPi
-│   └── schematic
-├── led
-│   ├── led_bcm2835
-│   ├── led_fs
-│   ├── led_python
-│   ├── led_shell
-│   ├── led_wiringPi
-│   └── schematic
-├── LICENSE
-├── oled
-│   ├── bcm2835
-│   ├── python
-│   ├── schematic
-│   └── wiringPi
-├── pic
-│   ├── function.jpg
-│   ├── getcode.png
-│   ├── getupdate.png
-│   └── gpio.png
-├── README.md
-├── rgb
-│   ├── rgb
-│   ├── rgb.c
-│   └── schematic
-└── schematic
-    └── RainbowCandyBoard.pdf
+RainbowCandyBoard/
+|-- buzzer
+|   |-- buzzer_bcm2835
+|   |-- buzzer_fs
+|   |-- buzzer_python
+|   |-- buzzer_shell
+|   `-- buzzer_wiringPi
+|-- ds18b20
+|   |-- python
+|   |-- README.md
+|   `-- sysfs
+|-- fan
+|   |-- fan_wiringPi
+|   `-- README.md
+|-- ir
+|   `-- README.md
+|-- key
+|   |-- key_bcm2835
+|   |-- key_python
+|   `-- key_wiringPi
+|-- led
+|   |-- led_BoardRev1.0
+|   `-- led_BoardRev2.0
+|-- LICENSE
+|-- oled
+|   |-- bcm2835
+|   |-- python
+|   |-- readme
+|   `-- wiringPi
+|-- README.md
+|-- rgb
+|   |-- README.md
+|   |-- rgb
+|   `-- rgb.c
+|-- schematic
+|   |-- RainbowCandyBoard_Rev1.0.pdf
+|   `-- RainbowCandyBoard_Rev2.0.pdf
+`-- uart
+    |-- RaspberryPi2
+    |-- RaspberryPi3
+    `-- Readme.md
 ```
 ### 该仓库包含了以下外设的代码：
 |外设|wiringPi|Python|BCM2835 C|sysfs|Kernel|
