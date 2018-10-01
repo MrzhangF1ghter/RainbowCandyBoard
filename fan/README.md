@@ -143,7 +143,7 @@ over_voltage=CPU电压步进值
 sdram_over_voltage=内存电压步进值
 ```
 > 在1.6Ghz最高频率下，跑分跑到了96秒左右的成绩（越短越好）,提升约10秒的时间，在温控风扇的力压下，仍不超过60度
-> <img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j5zNO4FWrZXH_!!1887229091.png" width=50% height=50%/><br> 
+> <img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j5zNO4FWrZXH_!!1887229091.png" width=100% height=50%/><br> 
 > 我们在config.txt的末尾添加我们的超频参数，重启即可生效，下面是提供的超频方案，请按需选择(树莓派3B+)树莓派3B最高频率不要超过1450，其他相同
 > 1.45Ghz带GPU超频方案
 ```
