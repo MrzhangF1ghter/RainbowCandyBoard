@@ -27,6 +27,7 @@
 #include <unistd.h>
 #include <wiringPi.h>
 #define TEMP_PATH "/sys/class/thermal/thermal_zone0/temp"
+#define FREQ_PATH "/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_cur_freq"
 #define MAX_SIZE 32
 #define FAN 1//原生PWM引脚 GPIO18,wiringPi引脚为1
 
@@ -34,10 +35,13 @@ int main(void)
 
 {
 
-	int fd;
+	int fd_temp,fd_freq;
 	double temp = 0;
-	char buf[MAX_SIZE];
+	int freq;
+	char buf_temp[MAX_SIZE];
+	char buf_freq[MAX_SIZE];
 	int speed;//速度值
+	float speed_precent;
 	int min_speed=10;//最小速度值
 	int temp_thre=40;//启动风扇的阈值
 	int speed_step=100;//步进值
@@ -50,28 +54,31 @@ int main(void)
 	while(1)//循环检测
 	{
 		//open
-		fd = open(TEMP_PATH,O_RDONLY);//打开文件
-		if(fd<0)
+		fd_temp = open(TEMP_PATH,O_RDONLY);//打开文件
+		fd_freq = open(FREQ_PATH,O_RDONLY);//打开文件
+		if(fd_temp<0)
 		{
-
 			printf("failed to open /sys/class/thermal/thermal_zone0/temp\n");
 			return -1;
-
 		}
-
-		//read
-
-		if(read(fd,buf,MAX_SIZE)<0)
-
+		if(fd_freq<0)
 		{
-
+			printf("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq\n");
+			return -1;
+		}
+		//read
+		if(read(fd_temp,buf_temp,MAX_SIZE)<0)
+		{
 			printf("failed to read temp\n");
 			return -1;
-
+		}	
+		if(read(fd_freq,buf_freq,MAX_SIZE)<0)
+		{
+			printf("failed to read freq\n");
+			return -1;
 		}
-
-		temp = atoi(buf)/1000.0;//将读到的温度值转化为浮点数;
-		printf("cpu temp :%.2f\n",temp);
+		temp = atoi(buf_temp)/1000.0;//将读到的温度值转化为浮点数;
+		freq = atol(buf_freq);//将读到的频率值转化为整数;
 		if(temp<=temp_thre)//如果CPU温度小于启动阈值
 		{
 			pwmWrite(FAN,0);//风扇转速为0
@@ -85,9 +92,11 @@ int main(void)
 				speed=1023;
 			pwmWrite(FAN,speed);//设置pwm值
 		}
-		printf("speed:%d\n",speed);
-		close(fd);//关闭文件
-		sleep(5);//睡眠5s
+		//speed_precent = (speed/1023.0)*100;
+		printf("cpu temp:%.2f,cpu freq:%.2fGhz,fan speed:%.0f%%\n",temp,freq/1000000.0,(float)((speed/1023.0)*100));
+		close(fd_temp);//关闭文件
+		close(fd_freq);//关闭文件
+		sleep(1);//睡眠5s
 	}
 
 }
@@ -104,14 +113,14 @@ int main(void)
 > 按了回车后，风扇将根据CPU温度而调整转速
 > 按下`Ctrl+C`结束程序<br>
 ### 玩·超频
-> 在风扇的力压下，不超频正常情况下能在40度左右盘旋，风扇以非常低的速度运转，在满负荷1.4Ghz情况下，温度不超过55度。相比不加风扇满负荷在70多度而言，降温接近20度！
-> 不带温控风扇空闲状态：
+> 在风扇的力压下，不超频正常情况下能在40度左右盘旋，风扇以非常低的速度运转，在满负荷1.4Ghz情况下，温度不超过55度。相比不加风扇满负荷在70多度而言，降温接近20度！   
+> 不带温控风扇空闲状态：     
 > <img src="https://img.alicdn.com/imgextra/i4/1887229091/O1CN012H1j64F7FBAqcAS_!!1887229091.png" width=50% height=50%/><br>  
-> 不带温控风扇满负荷状态：
+> 不带温控风扇满负荷状态：    
 > <img src="https://img.alicdn.com/imgextra/i4/1887229091/O1CN012H1j63af5lwbOhg_!!1887229091.png" width=50% height=50%/><br>  
-> 温控风扇下空闲状态:
+> 温控风扇下空闲状态:     
 > <img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j61P9hNaXkm0_!!1887229091.png" width=50% height=50%/><br>  
-温控风扇下满负荷状态:
+温控风扇下满负荷状态:    
 > <img src="https://img.alicdn.com/imgextra/i2/1887229091/O1CN012H1j5v3ektd8yDb_!!1887229091.png" width=50% height=50%/><br> 
 #### 超频
 > 树莓派超频需谨慎！每个板子的素质有所不同，请自行调整
