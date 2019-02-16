@@ -5,7 +5,11 @@
 int main()
 {
 	int fd;
-	if(wiringPiSetup() < 0)return 1;
+	if(wiringPiSetup() < 0)
+	{
+		return 1;
+		printf("error\r\n");
+	}
 //	if((fd = serialOpen("/dev/ttyAMA0",115200)) < 0)return 1;
 	if((fd = serialOpen("/dev/ttyS0",115200)) < 0)return 1;
 	printf("serial test start ...\n");
