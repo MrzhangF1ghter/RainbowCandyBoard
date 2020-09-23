@@ -14,8 +14,6 @@
 # <img src="https://img.alicdn.com/imgextra/i4/1887229091/TB2MaoWb3HqK1RjSZFPXXcwapXa_!!1887229091.jpg"/><br>
 # <img src="https://img.alicdn.com/imgextra/i2/1887229091/TB2e20kcmzqK1RjSZFjXXblCFXa_!!1887229091.jpg" /><br>
 
-
-# 彩虹扩展板购买地址：https://shop145367846.taobao.com/
 ### 教程使用方法：
 ### 新手引导:
 > https://github.com/MrzhangF1ghter/RainbowCandyBoard/wiki
